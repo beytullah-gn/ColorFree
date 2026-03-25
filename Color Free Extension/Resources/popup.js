@@ -3,6 +3,8 @@ const labelEl = document.getElementById("pick-color-label");
 const historyList = document.getElementById("history-list");
 const statusText = document.getElementById("status");
 const repoLink = document.getElementById("repo-link");
+const generalPickerButton = document.getElementById("open-general-picker");
+const generalColorInput = document.getElementById("general-color-input");
 
 const pickColorLabel =
   browser.i18n.getMessage("popup_pick_color") || "Pick Color";
@@ -12,10 +14,13 @@ const noColorsLabel =
   browser.i18n.getMessage("popup_no_colors") || "No colors picked yet.";
 const githubRepoLabel =
   browser.i18n.getMessage("popup_github_repo") || "GitHub Repo";
+const generalPickerLabel =
+  browser.i18n.getMessage("popup_general_picker") || "Color Picker";
 
 if (labelEl) labelEl.textContent = pickColorLabel;
 document.querySelector(".history-title").textContent = recentColorsLabel;
 if (repoLink) repoLink.textContent = githubRepoLabel;
+if (generalPickerButton) generalPickerButton.textContent = generalPickerLabel;
 
 function setStatus(message, isError = false) {
   statusText.textContent = message || "Ready";
@@ -206,6 +211,7 @@ historyList.addEventListener("click", (event) => {
 
 pickButton.addEventListener("click", async () => {
   pickButton.disabled = true;
+  pickButton.classList.add("is-loading");
   setStatus("Picking color...");
 
   try {
@@ -231,6 +237,7 @@ pickButton.addEventListener("click", async () => {
     setStatus("Could not start picker.", true);
   } finally {
     pickButton.disabled = false;
+    pickButton.classList.remove("is-loading");
   }
 });
 
@@ -238,3 +245,30 @@ loadHistory().catch(() => {
   setStatus("Could not load color history.", true);
 });
 setStatus();
+
+if (generalPickerButton && generalColorInput) {
+  generalPickerButton.addEventListener("click", () => {
+    generalColorInput.click();
+  });
+
+  generalColorInput.addEventListener("input", async () => {
+    const picked = (generalColorInput.value || "").toUpperCase();
+    if (!/^#[0-9A-F]{6}$/.test(picked)) {
+      return;
+    }
+
+    try {
+      await copyColor(picked);
+      const response = await browser.runtime.sendMessage({
+        type: "COLOR_PICKED",
+        color: picked,
+      });
+
+      if (Array.isArray(response?.colors)) {
+        renderHistory(response.colors);
+      }
+    } catch (_error) {
+      setStatus("Could not save selected color.", true);
+    }
+  });
+}

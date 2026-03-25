@@ -26,5 +26,9 @@
   "popup_github_repo": {
     "message": "GitHub Repo",
     "description": "Small footer link label in popup for opening repository page."
+  },
+  "popup_general_picker": {
+    "message": "Color Picker",
+    "description": "Small button label in popup to open native color chooser."
   }
 }

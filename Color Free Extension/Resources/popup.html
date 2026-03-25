@@ -10,22 +10,36 @@
     <main class="popup-container">
       <header class="header">
         <button id="pick-color-button" type="button" class="pick-button">
+          <span id="pick-color-label">Pick Color</span>
           <svg
             class="pick-icon"
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
+            width="22"
+            height="22"
+            viewBox="0 0 22 22"
             fill="none"
             stroke="currentColor"
             stroke-width="2"
             stroke-linecap="round"
             stroke-linejoin="round"
           >
-            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
-            <path d="M12 8v4" />
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <line x1="15" y1="16" x2="19" y2="12"></line>
+            <line x1="15" y1="8" x2="19" y2="12"></line>
           </svg>
-          <span id="pick-color-label">Pick Color</span>
+          <svg
+            class="spinner"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <path
+              d="M10.14,1.16a11,11,0,0,0-9,8.92A1.59,1.59,0,0,0,2.46,12,1.52,1.52,0,0,0,4.11,10.7a8,8,0,0,1,6.66-6.61A1.42,1.42,0,0,0,12,2.69h0A1.57,1.57,0,0,0,10.14,1.16Z"
+            />
+          </svg>
         </button>
         <div id="status" class="status" aria-live="polite">Ready</div>
       </header>
@@ -37,10 +51,26 @@
         <ul id="history-list" class="history-list"></ul>
       </section>
 
+      <button
+        id="open-general-picker"
+        class="mini-picker-button"
+        type="button"
+        title="Open color picker"
+      >
+        Color Picker
+      </button>
+      <input
+        id="general-color-input"
+        class="general-color-input"
+        type="color"
+        aria-hidden="true"
+        tabindex="-1"
+      />
+
       <a
         id="repo-link"
         class="repo-link"
-        href="https://github.com/beytullah-gn/Color-Free"
+        href="https://github.com/beytullah-gn/ColorFree"
         target="_blank"
         rel="noopener noreferrer"
       >
