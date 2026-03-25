@@ -1,0 +1,162 @@
+{
+  "extension_name": {
+    "message": "Color Free Extension",
+    "description": "Uzantının görünen adı."
+  },
+  "extension_description": {
+    "message": "Yerel macOS renk seçicisiyle renk seçin. Yalnızca tıkladığınızda çalışır.",
+    "description": "Uzantının ne yaptığını açıklar."
+  },
+  "pick_color_menu_title": {
+    "message": "Renk Seç",
+    "description": "Renk seçimini başlatan sağ tık menüsü başlığı."
+  },
+  "text_style_menu_title": {
+    "message": "Yazı Özellikleri",
+    "description": "Seçili metin stilini inceleyen sağ tık menüsü başlığı."
+  },
+  "popup_pick_color": {
+    "message": "Renk Seç",
+    "description": "Popup içindeki renk seçme düğmesi etiketi."
+  },
+  "popup_recent_colors": {
+    "message": "Son Renkler",
+    "description": "Son renkler listesinin başlığı."
+  },
+  "popup_no_colors": {
+    "message": "Henüz renk seçilmedi.",
+    "description": "Renk geçmişi boş durum metni."
+  },
+  "popup_github_repo": {
+    "message": "GitHub Deposu",
+    "description": "Depo bağlantısı etiketi."
+  },
+  "popup_general_picker": {
+    "message": "Renk Oluştur",
+    "description": "Genel renk seçiciyi açan küçük düğme etiketi."
+  },
+  "popup_general_picker_title": {
+    "message": "Renk seçiciyi aç",
+    "description": "Renk oluşturma düğmesi ipucu."
+  },
+  "popup_selected_text_style": {
+    "message": "Seçili Metin Stili",
+    "description": "Seçili metin stil bölümü başlığı."
+  },
+  "popup_inspect_selected_text": {
+    "message": "Seçili Metni İncele",
+    "description": "Seçili metni inceleme düğmesi etiketi."
+  },
+  "popup_no_selected_text": {
+    "message": "Seçili metin bulunamadı.",
+    "description": "Henüz seçili metin yokken gösterilen yer tutucu."
+  },
+  "popup_page_size_label": {
+    "message": "Geçerli Sayfa Boyutu:",
+    "description": "Aktif sayfa boyutu etiketi."
+  },
+  "popup_status_ready": {
+    "message": "Hazır",
+    "description": "Varsayılan popup durum metni."
+  },
+  "popup_status_copied_value": {
+    "message": "{{value}} kopyalandı",
+    "description": "Bir değer kopyalandığında gösterilen durum mesajı."
+  },
+  "popup_status_selected_value": {
+    "message": "{{value}} seçildi",
+    "description": "Prompt ile seçim yapıldığında gösterilen durum mesajı."
+  },
+  "popup_status_inspecting_text": {
+    "message": "Seçili metin inceleniyor...",
+    "description": "Metin stili incelenirken gösterilen durum mesajı."
+  },
+  "popup_status_text_style_loaded": {
+    "message": "Metin stili yüklendi.",
+    "description": "Metin stili başarıyla yüklendiğinde gösterilen durum mesajı."
+  },
+  "popup_status_select_text_first": {
+    "message": "Önce sayfada bir metin seçin.",
+    "description": "Seçili metin olmadığında gösterilen hata."
+  },
+  "popup_status_inspect_text_failed": {
+    "message": "Seçili metin incelenemedi.",
+    "description": "Metin stili incelemesi başarısız olduğunda gösterilen hata."
+  },
+  "popup_status_picking_color": {
+    "message": "Renk seçiliyor...",
+    "description": "Yerel renk seçici açılırken gösterilen durum."
+  },
+  "popup_status_canceled": {
+    "message": "İptal edildi",
+    "description": "Renk seçimi iptal edildiğinde gösterilen durum."
+  },
+  "popup_status_pick_color_failed": {
+    "message": "Renk seçilemedi.",
+    "description": "Renk seçimi sonuç vermezse gösterilen hata."
+  },
+  "popup_status_picker_start_failed": {
+    "message": "Seçici başlatılamadı.",
+    "description": "Yerel seçici başlatılamazsa gösterilen hata."
+  },
+  "popup_status_load_history_failed": {
+    "message": "Renk geçmişi yüklenemedi.",
+    "description": "Kayıtlı renk geçmişi okunamazsa gösterilen hata."
+  },
+  "popup_status_save_color_failed": {
+    "message": "Seçilen renk kaydedilemedi.",
+    "description": "Seçilen renk saklanamazsa gösterilen hata."
+  },
+  "popup_copy_prompt": {
+    "message": "Renk kodunu kopyala",
+    "description": "Pano erişimi yoksa gösterilen prompt etiketi."
+  },
+  "popup_copy_value_title": {
+    "message": "Değeri kopyala",
+    "description": "Popup içindeki kopyalanabilir değerler için ipucu."
+  },
+  "popup_selected_text_fallback": {
+    "message": "Seçili metin",
+    "description": "Önizleme metni yoksa kullanılan yedek etiket."
+  },
+  "style_label_color": {
+    "message": "Renk",
+    "description": "Renk stil değeri etiketi."
+  },
+  "style_label_font": {
+    "message": "Yazı Tipi",
+    "description": "Yazı tipi ailesi etiketi."
+  },
+  "style_label_size": {
+    "message": "Boyut",
+    "description": "Yazı boyutu etiketi."
+  },
+  "style_label_weight": {
+    "message": "Kalınlık",
+    "description": "Yazı kalınlığı etiketi."
+  },
+  "text_inspector_no_text_selected": {
+    "message": "Metin seçilmedi.",
+    "description": "Seçim olmadan metin inceleme istenirse gösterilen hata."
+  },
+  "text_inspector_selected_element_error": {
+    "message": "Seçilen öğe okunamadı.",
+    "description": "Seçilen öğe çözülemezse gösterilen hata."
+  },
+  "text_inspector_close": {
+    "message": "Kapat",
+    "description": "Sayfa üstü metin inceleme panelini kapatma düğmesi."
+  },
+  "text_inspector_close_aria_label": {
+    "message": "Yazı özelliklerini kapat",
+    "description": "Kapatma düğmesinin erişilebilir etiketi."
+  },
+  "text_inspector_title": {
+    "message": "Yazı Özellikleri",
+    "description": "Sayfa üstü metin inceleme paneli başlığı."
+  },
+  "text_inspector_copy_prompt": {
+    "message": "Yazı stili değerini kopyala",
+    "description": "Yazı stili kopyalaması prompt'a düşerse gösterilen metin."
+  }
+}

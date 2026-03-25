@@ -4,159 +4,159 @@
     "description": "The display name for the extension."
   },
   "extension_description": {
-    "message": "Pick colors with native macOS color sampler. Runs only when you click.",
+    "message": "macOS-এর নিজস্ব color sampler দিয়ে রং বেছে নিন। শুধু ক্লিক করলে চালু হয়।",
     "description": "Description of what the extension does."
   },
   "pick_color_menu_title": {
-    "message": "Pick Color",
+    "message": "রং বাছুন",
     "description": "Context menu item title to start color picking mode."
   },
   "text_style_menu_title": {
-    "message": "Text Properties",
+    "message": "টেক্সটের বৈশিষ্ট্য",
     "description": "Context menu item title to inspect selected text style."
   },
   "popup_pick_color": {
-    "message": "Pick Color",
+    "message": "রং বাছুন",
     "description": "Button label in popup to start picking a color."
   },
   "popup_recent_colors": {
-    "message": "Recent Colors",
+    "message": "সাম্প্রতিক রং",
     "description": "Section title for recent color list."
   },
   "popup_no_colors": {
-    "message": "No colors picked yet.",
+    "message": "এখনও কোনো রং বাছা হয়নি।",
     "description": "Empty state text for color history list."
   },
   "popup_github_repo": {
-    "message": "GitHub Repo",
+    "message": "GitHub রিপোজিটরি",
     "description": "Small footer link label in popup for opening repository page."
   },
   "popup_general_picker": {
-    "message": "Create Color",
+    "message": "রং তৈরি করুন",
     "description": "Small button label in popup to open native color chooser."
   },
   "popup_general_picker_title": {
-    "message": "Open color picker",
+    "message": "রং বাছাইকারী খুলুন",
     "description": "Tooltip for the popup color creator button."
   },
   "popup_selected_text_style": {
-    "message": "Selected Text Style",
+    "message": "নির্বাচিত টেক্সটের স্টাইল",
     "description": "Section title for selected text style inspector."
   },
   "popup_inspect_selected_text": {
-    "message": "Inspect Selected Text",
+    "message": "নির্বাচিত টেক্সট দেখুন",
     "description": "Button label to inspect style values of selected text."
   },
   "popup_no_selected_text": {
-    "message": "No selected text found.",
+    "message": "কোনো নির্বাচিত টেক্সট পাওয়া যায়নি।",
     "description": "Placeholder text when no page text is selected yet."
   },
   "popup_page_size_label": {
-    "message": "Current Page Size:",
+    "message": "বর্তমান পেজের আকার:",
     "description": "Label for the active page size information in the popup."
   },
   "popup_status_ready": {
-    "message": "Ready",
+    "message": "প্রস্তুত",
     "description": "Default popup status text."
   },
   "popup_status_copied_value": {
-    "message": "Copied {{value}}",
+    "message": "{{value}} কপি করা হয়েছে",
     "description": "Status message shown after copying a value."
   },
   "popup_status_selected_value": {
-    "message": "Selected {{value}}",
+    "message": "{{value}} নির্বাচিত হয়েছে",
     "description": "Fallback status message shown after selecting a value via prompt."
   },
   "popup_status_inspecting_text": {
-    "message": "Inspecting selected text...",
+    "message": "নির্বাচিত টেক্সট দেখা হচ্ছে...",
     "description": "Status message shown while text style inspection is running."
   },
   "popup_status_text_style_loaded": {
-    "message": "Text style loaded.",
+    "message": "টেক্সট স্টাইল লোড হয়েছে।",
     "description": "Status message shown after a successful text style inspection."
   },
   "popup_status_select_text_first": {
-    "message": "Select any text on the page first.",
+    "message": "আগে পেজে কিছু টেক্সট নির্বাচন করুন।",
     "description": "Error shown when no selected text is available."
   },
   "popup_status_inspect_text_failed": {
-    "message": "Could not inspect selected text.",
+    "message": "নির্বাচিত টেক্সট দেখা যায়নি।",
     "description": "Error shown when text style inspection fails."
   },
   "popup_status_picking_color": {
-    "message": "Picking color...",
+    "message": "রং বাছা হচ্ছে...",
     "description": "Status shown while the native color picker is opening."
   },
   "popup_status_canceled": {
-    "message": "Canceled",
+    "message": "বাতিল",
     "description": "Status shown when the native color picker is canceled."
   },
   "popup_status_pick_color_failed": {
-    "message": "Could not pick color.",
+    "message": "রং বাছা যায়নি।",
     "description": "Error shown when color picking returns no result."
   },
   "popup_status_picker_start_failed": {
-    "message": "Could not start picker.",
+    "message": "পিকার চালু করা যায়নি।",
     "description": "Error shown when the native picker cannot be started."
   },
   "popup_status_load_history_failed": {
-    "message": "Could not load color history.",
+    "message": "রঙের ইতিহাস লোড করা যায়নি।",
     "description": "Error shown when stored color history cannot be read."
   },
   "popup_status_save_color_failed": {
-    "message": "Could not save selected color.",
+    "message": "নির্বাচিত রং সংরক্ষণ করা যায়নি।",
     "description": "Error shown when the chosen color cannot be stored."
   },
   "popup_copy_prompt": {
-    "message": "Copy color code",
+    "message": "রঙের কোড কপি করুন",
     "description": "Prompt label used when clipboard access is not available."
   },
   "popup_copy_value_title": {
-    "message": "Copy value",
+    "message": "মান কপি করুন",
     "description": "Tooltip used for copyable values in the popup."
   },
   "popup_selected_text_fallback": {
-    "message": "Selected text",
+    "message": "নির্বাচিত টেক্সট",
     "description": "Fallback label when selected text exists but no preview text is provided."
   },
   "style_label_color": {
-    "message": "Color",
+    "message": "রং",
     "description": "Label for a color style value."
   },
   "style_label_font": {
-    "message": "Font",
+    "message": "ফন্ট",
     "description": "Label for a font family style value."
   },
   "style_label_size": {
-    "message": "Size",
+    "message": "আকার",
     "description": "Label for a font size style value."
   },
   "style_label_weight": {
-    "message": "Weight",
+    "message": "ওজন",
     "description": "Label for a font weight style value."
   },
   "text_inspector_no_text_selected": {
-    "message": "No text selected.",
+    "message": "কোনো টেক্সট নির্বাচন করা হয়নি।",
     "description": "Error shown when text inspection is requested without a selection."
   },
   "text_inspector_selected_element_error": {
-    "message": "Could not read selected element.",
+    "message": "নির্বাচিত উপাদান পড়া যায়নি।",
     "description": "Error shown when the selected element cannot be resolved."
   },
   "text_inspector_close": {
-    "message": "Close",
+    "message": "বন্ধ করুন",
     "description": "Button label for closing the on-page text inspector panel."
   },
   "text_inspector_close_aria_label": {
-    "message": "Close text properties",
+    "message": "টেক্সটের বৈশিষ্ট্য বন্ধ করুন",
     "description": "Accessible label for the on-page text inspector close button."
   },
   "text_inspector_title": {
-    "message": "Text Properties",
+    "message": "টেক্সটের বৈশিষ্ট্য",
     "description": "Title of the on-page text inspector panel."
   },
   "text_inspector_copy_prompt": {
-    "message": "Copy text style value",
+    "message": "টেক্সট স্টাইলের মান কপি করুন",
     "description": "Prompt shown when copying a text style value falls back to prompt."
   }
 }

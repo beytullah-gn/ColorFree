@@ -5,6 +5,37 @@ const HISTORY_KEY = "recentColors";
 const HISTORY_LIMIT = 10;
 const UI_THEME_KEY = "uiThemeScheme";
 
+function getMessage(key, fallback, substitutions) {
+  return browser.i18n.getMessage(key, substitutions) || fallback;
+}
+
+function getTextInspectorMessages() {
+  return {
+    noTextSelected: getMessage(
+      "text_inspector_no_text_selected",
+      "No text selected.",
+    ),
+    selectedElementError: getMessage(
+      "text_inspector_selected_element_error",
+      "Could not read selected element.",
+    ),
+    close: getMessage("text_inspector_close", "Close"),
+    closeAriaLabel: getMessage(
+      "text_inspector_close_aria_label",
+      "Close text properties",
+    ),
+    title: getMessage("text_inspector_title", "Text Properties"),
+    copyPrompt: getMessage(
+      "text_inspector_copy_prompt",
+      "Copy text style value",
+    ),
+    styleColor: getMessage("style_label_color", "Color"),
+    styleFont: getMessage("style_label_font", "Font"),
+    styleSize: getMessage("style_label_size", "Size"),
+    styleWeight: getMessage("style_label_weight", "Weight"),
+  };
+}
+
 async function getStoredThemeScheme() {
   try {
     const data = await browser.storage.local.get(UI_THEME_KEY);
@@ -51,17 +82,30 @@ async function getContextMenuIcons() {
   };
 }
 
-function inspectSelectedTextOnPage(showPanel = false) {
+function inspectSelectedTextOnPage(showPanel = false, messages = {}) {
   const PANEL_ID = "color-free-text-style-panel";
+  const resolvedMessages = {
+    noTextSelected: messages.noTextSelected || "No text selected.",
+    selectedElementError:
+      messages.selectedElementError || "Could not read selected element.",
+    close: messages.close || "Close",
+    closeAriaLabel: messages.closeAriaLabel || "Close text properties",
+    title: messages.title || "Text Properties",
+    copyPrompt: messages.copyPrompt || "Copy text style value",
+    styleColor: messages.styleColor || "Color",
+    styleFont: messages.styleFont || "Font",
+    styleSize: messages.styleSize || "Size",
+    styleWeight: messages.styleWeight || "Weight",
+  };
 
   const selection = window.getSelection();
   if (!selection || selection.rangeCount === 0 || selection.isCollapsed) {
-    return { ok: false, error: "No text selected." };
+    return { ok: false, error: resolvedMessages.noTextSelected };
   }
 
   const selectedText = (selection.toString() || "").trim();
   if (!selectedText) {
-    return { ok: false, error: "No text selected." };
+    return { ok: false, error: resolvedMessages.noTextSelected };
   }
 
   const range = selection.getRangeAt(0);
@@ -72,7 +116,7 @@ function inspectSelectedTextOnPage(showPanel = false) {
       : sourceNode?.parentElement;
 
   if (!sourceElement) {
-    return { ok: false, error: "Could not read selected element." };
+    return { ok: false, error: resolvedMessages.selectedElementError };
   }
 
   const styles = window.getComputedStyle(sourceElement);
@@ -118,8 +162,8 @@ function inspectSelectedTextOnPage(showPanel = false) {
 
     const closeButton = document.createElement("button");
     closeButton.type = "button";
-    closeButton.textContent = "Close";
-    closeButton.setAttribute("aria-label", "Close text properties");
+    closeButton.textContent = resolvedMessages.close;
+    closeButton.setAttribute("aria-label", resolvedMessages.closeAriaLabel);
     closeButton.style.position = "absolute";
     closeButton.style.top = "6px";
     closeButton.style.right = "6px";
@@ -161,7 +205,7 @@ function inspectSelectedTextOnPage(showPanel = false) {
     titleIcon.style.color = "#F9FAFB";
 
     const title = document.createElement("div");
-    title.textContent = "Text Properties";
+    title.textContent = resolvedMessages.title;
     title.style.fontSize = "11px";
     title.style.letterSpacing = "0.08em";
     title.style.textTransform = "uppercase";
@@ -198,10 +242,10 @@ function inspectSelectedTextOnPage(showPanel = false) {
     list.replaceChildren();
 
     const rows = [
-      ["Color", payload.style.color],
-      ["Font", payload.style.fontFamily],
-      ["Size", payload.style.fontSize],
-      ["Weight", payload.style.fontWeight],
+      [resolvedMessages.styleColor, payload.style.color],
+      [resolvedMessages.styleFont, payload.style.fontFamily],
+      [resolvedMessages.styleSize, payload.style.fontSize],
+      [resolvedMessages.styleWeight, payload.style.fontWeight],
     ];
 
     rows.forEach(([label, value]) => {
@@ -243,7 +287,7 @@ function inspectSelectedTextOnPage(showPanel = false) {
         } catch (_error) {
           // Fallback to prompt below.
         }
-        window.prompt("Copy text style value", value);
+        window.prompt(resolvedMessages.copyPrompt, value);
       });
 
       list.appendChild(row);
@@ -280,8 +324,10 @@ async function executeScriptInTab(tabId, func, args = []) {
 
 async function inspectSelectedTextForTab(tabId, showPanel = false) {
   try {
+    const messages = getTextInspectorMessages();
     const result = await executeScriptInTab(tabId, inspectSelectedTextOnPage, [
       showPanel,
+      messages,
     ]);
 
     if (result?.ok) {

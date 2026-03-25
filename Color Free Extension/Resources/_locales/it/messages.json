@@ -4,123 +4,123 @@
     "description": "The display name for the extension."
   },
   "extension_description": {
-    "message": "Pick colors with native macOS color sampler. Runs only when you click.",
+    "message": "Scegli i colori con il selettore colori nativo di macOS. Si avvia solo quando fai clic.",
     "description": "Description of what the extension does."
   },
   "pick_color_menu_title": {
-    "message": "Pick Color",
+    "message": "Scegli colore",
     "description": "Context menu item title to start color picking mode."
   },
   "text_style_menu_title": {
-    "message": "Text Properties",
+    "message": "Proprietà del testo",
     "description": "Context menu item title to inspect selected text style."
   },
   "popup_pick_color": {
-    "message": "Pick Color",
+    "message": "Scegli colore",
     "description": "Button label in popup to start picking a color."
   },
   "popup_recent_colors": {
-    "message": "Recent Colors",
+    "message": "Colori recenti",
     "description": "Section title for recent color list."
   },
   "popup_no_colors": {
-    "message": "No colors picked yet.",
+    "message": "Nessun colore selezionato finora.",
     "description": "Empty state text for color history list."
   },
   "popup_github_repo": {
-    "message": "GitHub Repo",
+    "message": "Repository GitHub",
     "description": "Small footer link label in popup for opening repository page."
   },
   "popup_general_picker": {
-    "message": "Create Color",
+    "message": "Crea colore",
     "description": "Small button label in popup to open native color chooser."
   },
   "popup_general_picker_title": {
-    "message": "Open color picker",
+    "message": "Apri selettore colore",
     "description": "Tooltip for the popup color creator button."
   },
   "popup_selected_text_style": {
-    "message": "Selected Text Style",
+    "message": "Stile del testo selezionato",
     "description": "Section title for selected text style inspector."
   },
   "popup_inspect_selected_text": {
-    "message": "Inspect Selected Text",
+    "message": "Controlla testo selezionato",
     "description": "Button label to inspect style values of selected text."
   },
   "popup_no_selected_text": {
-    "message": "No selected text found.",
+    "message": "Nessun testo selezionato trovato.",
     "description": "Placeholder text when no page text is selected yet."
   },
   "popup_page_size_label": {
-    "message": "Current Page Size:",
+    "message": "Dimensione attuale della pagina:",
     "description": "Label for the active page size information in the popup."
   },
   "popup_status_ready": {
-    "message": "Ready",
+    "message": "Pronto",
     "description": "Default popup status text."
   },
   "popup_status_copied_value": {
-    "message": "Copied {{value}}",
+    "message": "{{value}} copiato",
     "description": "Status message shown after copying a value."
   },
   "popup_status_selected_value": {
-    "message": "Selected {{value}}",
+    "message": "{{value}} selezionato",
     "description": "Fallback status message shown after selecting a value via prompt."
   },
   "popup_status_inspecting_text": {
-    "message": "Inspecting selected text...",
+    "message": "Controllo del testo selezionato...",
     "description": "Status message shown while text style inspection is running."
   },
   "popup_status_text_style_loaded": {
-    "message": "Text style loaded.",
+    "message": "Stile del testo caricato.",
     "description": "Status message shown after a successful text style inspection."
   },
   "popup_status_select_text_first": {
-    "message": "Select any text on the page first.",
+    "message": "Seleziona prima del testo nella pagina.",
     "description": "Error shown when no selected text is available."
   },
   "popup_status_inspect_text_failed": {
-    "message": "Could not inspect selected text.",
+    "message": "Impossibile controllare il testo selezionato.",
     "description": "Error shown when text style inspection fails."
   },
   "popup_status_picking_color": {
-    "message": "Picking color...",
+    "message": "Selezione del colore...",
     "description": "Status shown while the native color picker is opening."
   },
   "popup_status_canceled": {
-    "message": "Canceled",
+    "message": "Annullato",
     "description": "Status shown when the native color picker is canceled."
   },
   "popup_status_pick_color_failed": {
-    "message": "Could not pick color.",
+    "message": "Impossibile scegliere il colore.",
     "description": "Error shown when color picking returns no result."
   },
   "popup_status_picker_start_failed": {
-    "message": "Could not start picker.",
+    "message": "Impossibile avviare il selettore.",
     "description": "Error shown when the native picker cannot be started."
   },
   "popup_status_load_history_failed": {
-    "message": "Could not load color history.",
+    "message": "Impossibile caricare la cronologia colori.",
     "description": "Error shown when stored color history cannot be read."
   },
   "popup_status_save_color_failed": {
-    "message": "Could not save selected color.",
+    "message": "Impossibile salvare il colore selezionato.",
     "description": "Error shown when the chosen color cannot be stored."
   },
   "popup_copy_prompt": {
-    "message": "Copy color code",
+    "message": "Copia codice colore",
     "description": "Prompt label used when clipboard access is not available."
   },
   "popup_copy_value_title": {
-    "message": "Copy value",
+    "message": "Copia valore",
     "description": "Tooltip used for copyable values in the popup."
   },
   "popup_selected_text_fallback": {
-    "message": "Selected text",
+    "message": "Testo selezionato",
     "description": "Fallback label when selected text exists but no preview text is provided."
   },
   "style_label_color": {
-    "message": "Color",
+    "message": "Colore",
     "description": "Label for a color style value."
   },
   "style_label_font": {
@@ -128,35 +128,35 @@
     "description": "Label for a font family style value."
   },
   "style_label_size": {
-    "message": "Size",
+    "message": "Dimensione",
     "description": "Label for a font size style value."
   },
   "style_label_weight": {
-    "message": "Weight",
+    "message": "Peso",
     "description": "Label for a font weight style value."
   },
   "text_inspector_no_text_selected": {
-    "message": "No text selected.",
+    "message": "Nessun testo selezionato.",
     "description": "Error shown when text inspection is requested without a selection."
   },
   "text_inspector_selected_element_error": {
-    "message": "Could not read selected element.",
+    "message": "Impossibile leggere l'elemento selezionato.",
     "description": "Error shown when the selected element cannot be resolved."
   },
   "text_inspector_close": {
-    "message": "Close",
+    "message": "Chiudi",
     "description": "Button label for closing the on-page text inspector panel."
   },
   "text_inspector_close_aria_label": {
-    "message": "Close text properties",
+    "message": "Chiudi proprietà del testo",
     "description": "Accessible label for the on-page text inspector close button."
   },
   "text_inspector_title": {
-    "message": "Text Properties",
+    "message": "Proprietà del testo",
     "description": "Title of the on-page text inspector panel."
   },
   "text_inspector_copy_prompt": {
-    "message": "Copy text style value",
+    "message": "Copia valore stile del testo",
     "description": "Prompt shown when copying a text style value falls back to prompt."
   }
 }

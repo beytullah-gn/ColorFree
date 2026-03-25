@@ -5,6 +5,7 @@ const statusText = document.getElementById("status");
 const repoLink = document.getElementById("repo-link");
 const generalPickerButton = document.getElementById("open-general-picker");
 const generalColorInput = document.getElementById("general-color-input");
+const pageSizeLabel = document.getElementById("page-size-label");
 const pageSizeInfo = document.getElementById("page-size-info");
 const inspectTextStyleButton = document.getElementById(
   "inspect-text-style-button",
@@ -13,34 +14,103 @@ const textStyleTitleLabel = document.getElementById("text-style-title-label");
 const selectedTextPreview = document.getElementById("selected-text-preview");
 const textStyleList = document.getElementById("text-style-list");
 
-const pickColorLabel =
-  browser.i18n.getMessage("popup_pick_color") || "Pick Color";
-const recentColorsLabel =
-  browser.i18n.getMessage("popup_recent_colors") || "Recent Colors";
-const noColorsLabel =
-  browser.i18n.getMessage("popup_no_colors") || "No colors picked yet.";
-const githubRepoLabel =
-  browser.i18n.getMessage("popup_github_repo") || "GitHub Repo";
-const generalPickerLabel =
-  browser.i18n.getMessage("popup_general_picker") || "Color Picker";
-const selectedTextStyleLabel =
-  browser.i18n.getMessage("popup_selected_text_style") || "Selected Text Style";
-const inspectSelectedTextLabel =
-  browser.i18n.getMessage("popup_inspect_selected_text") ||
-  "Inspect Selected Text";
-const noSelectedTextLabel =
-  browser.i18n.getMessage("popup_no_selected_text") ||
-  "No selected text found.";
+function getMessage(key, fallback, substitutions) {
+  return browser.i18n.getMessage(key, substitutions) || fallback;
+}
 
-if (labelEl) labelEl.textContent = pickColorLabel;
-document.querySelector(".history-title").textContent = recentColorsLabel;
-if (repoLink) repoLink.textContent = githubRepoLabel;
-if (generalPickerButton) generalPickerButton.textContent = generalPickerLabel;
+function interpolateValue(template, value) {
+  return template.replace("{{value}}", value);
+}
+
+const labels = {
+  pickColor: getMessage("popup_pick_color", "Pick Color"),
+  recentColors: getMessage("popup_recent_colors", "Recent Colors"),
+  noColors: getMessage("popup_no_colors", "No colors picked yet."),
+  githubRepo: getMessage("popup_github_repo", "GitHub Repo"),
+  generalPicker: getMessage("popup_general_picker", "Create Color"),
+  generalPickerTitle: getMessage(
+    "popup_general_picker_title",
+    "Open color picker",
+  ),
+  selectedTextStyle: getMessage(
+    "popup_selected_text_style",
+    "Selected Text Style",
+  ),
+  inspectSelectedText: getMessage(
+    "popup_inspect_selected_text",
+    "Inspect Selected Text",
+  ),
+  noSelectedText: getMessage(
+    "popup_no_selected_text",
+    "No selected text found.",
+  ),
+  pageSizeLabel: getMessage("popup_page_size_label", "Current Page Size:"),
+  ready: getMessage("popup_status_ready", "Ready"),
+  copiedValue: getMessage("popup_status_copied_value", "Copied {{value}}"),
+  selectedValue: getMessage(
+    "popup_status_selected_value",
+    "Selected {{value}}",
+  ),
+  inspectingText: getMessage(
+    "popup_status_inspecting_text",
+    "Inspecting selected text...",
+  ),
+  textStyleLoaded: getMessage(
+    "popup_status_text_style_loaded",
+    "Text style loaded.",
+  ),
+  selectTextFirst: getMessage(
+    "popup_status_select_text_first",
+    "Select any text on the page first.",
+  ),
+  inspectTextFailed: getMessage(
+    "popup_status_inspect_text_failed",
+    "Could not inspect selected text.",
+  ),
+  pickingColor: getMessage("popup_status_picking_color", "Picking color..."),
+  canceled: getMessage("popup_status_canceled", "Canceled"),
+  pickColorFailed: getMessage(
+    "popup_status_pick_color_failed",
+    "Could not pick color.",
+  ),
+  pickerStartFailed: getMessage(
+    "popup_status_picker_start_failed",
+    "Could not start picker.",
+  ),
+  loadHistoryFailed: getMessage(
+    "popup_status_load_history_failed",
+    "Could not load color history.",
+  ),
+  saveColorFailed: getMessage(
+    "popup_status_save_color_failed",
+    "Could not save selected color.",
+  ),
+  copyPrompt: getMessage("popup_copy_prompt", "Copy color code"),
+  copyValueTitle: getMessage("popup_copy_value_title", "Copy value"),
+  selectedTextFallback: getMessage(
+    "popup_selected_text_fallback",
+    "Selected text",
+  ),
+  styleColor: getMessage("style_label_color", "Color"),
+  styleFont: getMessage("style_label_font", "Font"),
+  styleSize: getMessage("style_label_size", "Size"),
+  styleWeight: getMessage("style_label_weight", "Weight"),
+};
+
+if (labelEl) labelEl.textContent = labels.pickColor;
+document.querySelector(".history-title").textContent = labels.recentColors;
+if (repoLink) repoLink.textContent = labels.githubRepo;
+if (generalPickerButton) {
+  generalPickerButton.textContent = labels.generalPicker;
+  generalPickerButton.title = labels.generalPickerTitle;
+}
+if (pageSizeLabel) pageSizeLabel.textContent = labels.pageSizeLabel;
 if (textStyleTitleLabel)
-  textStyleTitleLabel.textContent = selectedTextStyleLabel;
+  textStyleTitleLabel.textContent = labels.selectedTextStyle;
 if (inspectTextStyleButton)
-  inspectTextStyleButton.textContent = inspectSelectedTextLabel;
-if (selectedTextPreview) selectedTextPreview.textContent = noSelectedTextLabel;
+  inspectTextStyleButton.textContent = labels.inspectSelectedText;
+if (selectedTextPreview)
+  selectedTextPreview.textContent = labels.noSelectedText;
 
 async function syncThemeSchemeForContextMenu() {
   let scheme = "light";
@@ -115,7 +185,7 @@ async function loadActivePageSize() {
 }
 
 function setStatus(message, isError = false) {
-  statusText.textContent = message || "Ready";
+  statusText.textContent = message || labels.ready;
   statusText.classList.toggle("status-error", isError);
 }
 
@@ -127,7 +197,7 @@ function createStyleFieldRow(label, value) {
   rowButton.type = "button";
   rowButton.className = "text-style-copy-btn";
   rowButton.dataset.copyValue = value;
-  rowButton.title = "Copy value";
+  rowButton.title = labels.copyValueTitle;
 
   const labelSpan = document.createElement("span");
   labelSpan.className = "text-style-label";
@@ -151,17 +221,17 @@ function renderSelectedTextStyle(result) {
   textStyleList.replaceChildren();
 
   if (!result?.ok) {
-    selectedTextPreview.textContent = noSelectedTextLabel;
+    selectedTextPreview.textContent = labels.noSelectedText;
     return;
   }
 
-  selectedTextPreview.textContent = result.text || "Selected text";
+  selectedTextPreview.textContent = result.text || labels.selectedTextFallback;
 
   const styleRows = [
-    ["Color", result.style.color],
-    ["Font", result.style.fontFamily],
-    ["Size", result.style.fontSize],
-    ["Weight", result.style.fontWeight],
+    [labels.styleColor, result.style.color],
+    [labels.styleFont, result.style.fontFamily],
+    [labels.styleSize, result.style.fontSize],
+    [labels.styleWeight, result.style.fontWeight],
   ];
 
   styleRows.forEach(([label, value]) => {
@@ -286,23 +356,23 @@ function createColorRow(colorHex) {
       <div class="swatch" style="background-color: ${colorHex}"></div>
     </div>
     <div class="color-info">
-      <button type="button" class="copy-btn" data-color="${colorHex}" title="Copy Hex">
+      <button type="button" class="copy-btn" data-color="${colorHex}" title="${labels.copyValueTitle}">
         <span class="label">HEX</span>
         <span class="value">${colorHex}</span>
       </button>
-      <button type="button" class="copy-btn" data-color="${colorRgb}" title="Copy RGB">
+      <button type="button" class="copy-btn" data-color="${colorRgb}" title="${labels.copyValueTitle}">
         <span class="label">RGB</span>
         <span class="value">${colorRgb}</span>
       </button>
-      <button type="button" class="copy-btn" data-color="${colorHsl}" title="Copy HSL">
+      <button type="button" class="copy-btn" data-color="${colorHsl}" title="${labels.copyValueTitle}">
         <span class="label">HSL</span>
         <span class="value">${colorHsl}</span>
       </button>
-      <button type="button" class="copy-btn" data-color="${colorHsv}" title="Copy HSV">
+      <button type="button" class="copy-btn" data-color="${colorHsv}" title="${labels.copyValueTitle}">
         <span class="label">HSV</span>
         <span class="value">${colorHsv}</span>
       </button>
-      <button type="button" class="copy-btn" data-color="${colorCmyk}" title="Copy CMYK">
+      <button type="button" class="copy-btn" data-color="${colorCmyk}" title="${labels.copyValueTitle}">
         <span class="label">CMYK</span>
         <span class="value">${colorCmyk}</span>
       </button>
@@ -339,12 +409,12 @@ async function loadHistory() {
 async function copyColor(color) {
   try {
     await navigator.clipboard.writeText(color);
-    setStatus(`Copied ${color}`);
-    setTimeout(() => setStatus("Ready"), 2000);
+    setStatus(interpolateValue(labels.copiedValue, color));
+    setTimeout(() => setStatus(labels.ready), 2000);
   } catch (_error) {
-    window.prompt("Copy color code", color);
-    setStatus(`Selected ${color}`);
-    setTimeout(() => setStatus("Ready"), 3000);
+    window.prompt(labels.copyPrompt, color);
+    setStatus(interpolateValue(labels.selectedValue, color));
+    setTimeout(() => setStatus(labels.ready), 3000);
   }
 }
 
@@ -376,22 +446,22 @@ if (textStyleList) {
 if (inspectTextStyleButton) {
   inspectTextStyleButton.addEventListener("click", async () => {
     inspectTextStyleButton.disabled = true;
-    setStatus("Inspecting selected text...");
+    setStatus(labels.inspectingText);
 
     try {
       const inspectResult = await inspectSelectedTextStyle();
       renderSelectedTextStyle(inspectResult);
 
       if (inspectResult?.ok) {
-        setStatus("Text style loaded.");
+        setStatus(labels.textStyleLoaded);
       } else {
-        setStatus("Select any text on the page first.", true);
+        setStatus(labels.selectTextFirst, true);
       }
     } catch (_error) {
-      setStatus("Could not inspect selected text.", true);
+      setStatus(labels.inspectTextFailed, true);
     } finally {
       inspectTextStyleButton.disabled = false;
-      setTimeout(() => setStatus("Ready"), 2200);
+      setTimeout(() => setStatus(labels.ready), 2200);
     }
   });
 }
@@ -399,7 +469,7 @@ if (inspectTextStyleButton) {
 pickButton.addEventListener("click", async () => {
   pickButton.disabled = true;
   pickButton.classList.add("is-loading");
-  setStatus("Picking color...");
+  setStatus(labels.pickingColor);
 
   try {
     const result = await browser.runtime.sendMessage({
@@ -407,21 +477,21 @@ pickButton.addEventListener("click", async () => {
     });
 
     if (result?.ok && result?.color) {
-      setStatus(`Copied ${result.color}`);
+      setStatus(interpolateValue(labels.copiedValue, result.color));
       renderHistory(Array.isArray(result.colors) ? result.colors : []);
-      setTimeout(() => setStatus("Ready"), 2000);
+      setTimeout(() => setStatus(labels.ready), 2000);
       return;
     }
 
     if (result?.canceled) {
-      setStatus("Canceled", false);
-      setTimeout(() => setStatus("Ready"), 2000);
+      setStatus(labels.canceled, false);
+      setTimeout(() => setStatus(labels.ready), 2000);
       return;
     }
 
-    setStatus("Could not pick color.", true);
+    setStatus(labels.pickColorFailed, true);
   } catch (_error) {
-    setStatus("Could not start picker.", true);
+    setStatus(labels.pickerStartFailed, true);
   } finally {
     pickButton.disabled = false;
     pickButton.classList.remove("is-loading");
@@ -429,7 +499,7 @@ pickButton.addEventListener("click", async () => {
 });
 
 loadHistory().catch(() => {
-  setStatus("Could not load color history.", true);
+  setStatus(labels.loadHistoryFailed, true);
 });
 loadActivePageSize();
 syncThemeSchemeForContextMenu();
@@ -457,7 +527,7 @@ if (generalPickerButton && generalColorInput) {
         renderHistory(response.colors);
       }
     } catch (_error) {
-      setStatus("Could not save selected color.", true);
+      setStatus(labels.saveColorFailed, true);
     }
   });
 }

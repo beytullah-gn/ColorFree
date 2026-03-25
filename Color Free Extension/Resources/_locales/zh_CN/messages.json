@@ -4,159 +4,159 @@
     "description": "The display name for the extension."
   },
   "extension_description": {
-    "message": "Pick colors with native macOS color sampler. Runs only when you click.",
+    "message": "使用 macOS 原生取色器选择颜色。仅在点击时运行。",
     "description": "Description of what the extension does."
   },
   "pick_color_menu_title": {
-    "message": "Pick Color",
+    "message": "选择颜色",
     "description": "Context menu item title to start color picking mode."
   },
   "text_style_menu_title": {
-    "message": "Text Properties",
+    "message": "文本属性",
     "description": "Context menu item title to inspect selected text style."
   },
   "popup_pick_color": {
-    "message": "Pick Color",
+    "message": "选择颜色",
     "description": "Button label in popup to start picking a color."
   },
   "popup_recent_colors": {
-    "message": "Recent Colors",
+    "message": "最近的颜色",
     "description": "Section title for recent color list."
   },
   "popup_no_colors": {
-    "message": "No colors picked yet.",
+    "message": "尚未选择任何颜色。",
     "description": "Empty state text for color history list."
   },
   "popup_github_repo": {
-    "message": "GitHub Repo",
+    "message": "GitHub 仓库",
     "description": "Small footer link label in popup for opening repository page."
   },
   "popup_general_picker": {
-    "message": "Create Color",
+    "message": "创建颜色",
     "description": "Small button label in popup to open native color chooser."
   },
   "popup_general_picker_title": {
-    "message": "Open color picker",
+    "message": "打开取色器",
     "description": "Tooltip for the popup color creator button."
   },
   "popup_selected_text_style": {
-    "message": "Selected Text Style",
+    "message": "所选文本样式",
     "description": "Section title for selected text style inspector."
   },
   "popup_inspect_selected_text": {
-    "message": "Inspect Selected Text",
+    "message": "检查所选文本",
     "description": "Button label to inspect style values of selected text."
   },
   "popup_no_selected_text": {
-    "message": "No selected text found.",
+    "message": "未找到所选文本。",
     "description": "Placeholder text when no page text is selected yet."
   },
   "popup_page_size_label": {
-    "message": "Current Page Size:",
+    "message": "当前页面大小：",
     "description": "Label for the active page size information in the popup."
   },
   "popup_status_ready": {
-    "message": "Ready",
+    "message": "就绪",
     "description": "Default popup status text."
   },
   "popup_status_copied_value": {
-    "message": "Copied {{value}}",
+    "message": "已复制 {{value}}",
     "description": "Status message shown after copying a value."
   },
   "popup_status_selected_value": {
-    "message": "Selected {{value}}",
+    "message": "已选择 {{value}}",
     "description": "Fallback status message shown after selecting a value via prompt."
   },
   "popup_status_inspecting_text": {
-    "message": "Inspecting selected text...",
+    "message": "正在检查所选文本...",
     "description": "Status message shown while text style inspection is running."
   },
   "popup_status_text_style_loaded": {
-    "message": "Text style loaded.",
+    "message": "文本样式已加载。",
     "description": "Status message shown after a successful text style inspection."
   },
   "popup_status_select_text_first": {
-    "message": "Select any text on the page first.",
+    "message": "请先在页面上选择一些文本。",
     "description": "Error shown when no selected text is available."
   },
   "popup_status_inspect_text_failed": {
-    "message": "Could not inspect selected text.",
+    "message": "无法检查所选文本。",
     "description": "Error shown when text style inspection fails."
   },
   "popup_status_picking_color": {
-    "message": "Picking color...",
+    "message": "正在选择颜色...",
     "description": "Status shown while the native color picker is opening."
   },
   "popup_status_canceled": {
-    "message": "Canceled",
+    "message": "已取消",
     "description": "Status shown when the native color picker is canceled."
   },
   "popup_status_pick_color_failed": {
-    "message": "Could not pick color.",
+    "message": "无法选择颜色。",
     "description": "Error shown when color picking returns no result."
   },
   "popup_status_picker_start_failed": {
-    "message": "Could not start picker.",
+    "message": "无法启动取色器。",
     "description": "Error shown when the native picker cannot be started."
   },
   "popup_status_load_history_failed": {
-    "message": "Could not load color history.",
+    "message": "无法加载颜色历史记录。",
     "description": "Error shown when stored color history cannot be read."
   },
   "popup_status_save_color_failed": {
-    "message": "Could not save selected color.",
+    "message": "无法保存所选颜色。",
     "description": "Error shown when the chosen color cannot be stored."
   },
   "popup_copy_prompt": {
-    "message": "Copy color code",
+    "message": "复制颜色代码",
     "description": "Prompt label used when clipboard access is not available."
   },
   "popup_copy_value_title": {
-    "message": "Copy value",
+    "message": "复制值",
     "description": "Tooltip used for copyable values in the popup."
   },
   "popup_selected_text_fallback": {
-    "message": "Selected text",
+    "message": "所选文本",
     "description": "Fallback label when selected text exists but no preview text is provided."
   },
   "style_label_color": {
-    "message": "Color",
+    "message": "颜色",
     "description": "Label for a color style value."
   },
   "style_label_font": {
-    "message": "Font",
+    "message": "字体",
     "description": "Label for a font family style value."
   },
   "style_label_size": {
-    "message": "Size",
+    "message": "大小",
     "description": "Label for a font size style value."
   },
   "style_label_weight": {
-    "message": "Weight",
+    "message": "字重",
     "description": "Label for a font weight style value."
   },
   "text_inspector_no_text_selected": {
-    "message": "No text selected.",
+    "message": "未选择文本。",
     "description": "Error shown when text inspection is requested without a selection."
   },
   "text_inspector_selected_element_error": {
-    "message": "Could not read selected element.",
+    "message": "无法读取所选元素。",
     "description": "Error shown when the selected element cannot be resolved."
   },
   "text_inspector_close": {
-    "message": "Close",
+    "message": "关闭",
     "description": "Button label for closing the on-page text inspector panel."
   },
   "text_inspector_close_aria_label": {
-    "message": "Close text properties",
+    "message": "关闭文本属性",
     "description": "Accessible label for the on-page text inspector close button."
   },
   "text_inspector_title": {
-    "message": "Text Properties",
+    "message": "文本属性",
     "description": "Title of the on-page text inspector panel."
   },
   "text_inspector_copy_prompt": {
-    "message": "Copy text style value",
+    "message": "复制文本样式值",
     "description": "Prompt shown when copying a text style value falls back to prompt."
   }
 }
