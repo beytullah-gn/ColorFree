@@ -1,0 +1,28 @@
+# macOS
+.DS_Store
+
+# Xcode user-specific data
+*.xcuserstate
+xcuserdata/
+**/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+Color Free.xcodeproj/xcuserdata/
+Color Free.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Xcode build artifacts
+build/
+DerivedData/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Environment and secrets
+.env
+.env.*
+
+# Certificates and provisioning
+*.p12
+*.mobileprovision
+*.pem

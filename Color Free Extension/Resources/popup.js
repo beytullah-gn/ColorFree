@@ -1,0 +1,240 @@
+const pickButton = document.getElementById("pick-color-button");
+const labelEl = document.getElementById("pick-color-label");
+const historyList = document.getElementById("history-list");
+const statusText = document.getElementById("status");
+const repoLink = document.getElementById("repo-link");
+
+const pickColorLabel =
+  browser.i18n.getMessage("popup_pick_color") || "Pick Color";
+const recentColorsLabel =
+  browser.i18n.getMessage("popup_recent_colors") || "Recent Colors";
+const noColorsLabel =
+  browser.i18n.getMessage("popup_no_colors") || "No colors picked yet.";
+const githubRepoLabel =
+  browser.i18n.getMessage("popup_github_repo") || "GitHub Repo";
+
+if (labelEl) labelEl.textContent = pickColorLabel;
+document.querySelector(".history-title").textContent = recentColorsLabel;
+if (repoLink) repoLink.textContent = githubRepoLabel;
+
+function setStatus(message, isError = false) {
+  statusText.textContent = message || "Ready";
+  statusText.classList.toggle("status-error", isError);
+}
+
+function hexToColorObj(hex) {
+  let r = 0,
+    g = 0,
+    b = 0;
+  if (hex.length === 4) {
+    r = parseInt(hex[1] + hex[1], 16);
+    g = parseInt(hex[2] + hex[2], 16);
+    b = parseInt(hex[3] + hex[3], 16);
+  } else if (hex.length === 7 || hex.length === 9) {
+    r = parseInt(hex.substring(1, 3), 16);
+    g = parseInt(hex.substring(3, 5), 16);
+    b = parseInt(hex.substring(5, 7), 16);
+  }
+  return { r, g, b };
+}
+
+function rgbToHsl(r, g, b) {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const max = Math.max(r, g, b),
+    min = Math.min(r, g, b);
+  let h,
+    s,
+    l = (max + min) / 2;
+
+  if (max === min) {
+    h = s = 0;
+  } else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
+    }
+    h /= 6;
+  }
+  return `hsl(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(l * 100)}%)`;
+}
+
+function rgbToHsv(r, g, b) {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const max = Math.max(r, g, b),
+    min = Math.min(r, g, b);
+  let h,
+    s,
+    v = max;
+  const d = max - min;
+  s = max === 0 ? 0 : d / max;
+
+  if (max === min) {
+    h = 0;
+  } else {
+    switch (max) {
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
+    }
+    h /= 6;
+  }
+  return `hsv(${Math.round(h * 360)}, ${Math.round(s * 100)}%, ${Math.round(v * 100)}%)`;
+}
+
+function rgbToCmyk(r, g, b) {
+  let c = 1 - r / 255;
+  let m = 1 - g / 255;
+  let y = 1 - b / 255;
+  let k = Math.min(c, Math.min(m, y));
+
+  if (k === 1) {
+    return `cmyk(0%, 0%, 0%, 100%)`;
+  }
+
+  c = (c - k) / (1 - k);
+  m = (m - k) / (1 - k);
+  y = (y - k) / (1 - k);
+  return `cmyk(${Math.round(c * 100)}%, ${Math.round(m * 100)}%, ${Math.round(y * 100)}%, ${Math.round(k * 100)}%)`;
+}
+
+function createColorRow(colorHex) {
+  const listItem = document.createElement("li");
+  listItem.className = "history-item";
+
+  const { r, g, b } = hexToColorObj(colorHex);
+  const colorRgb = `rgb(${r}, ${g}, ${b})`;
+  const colorHsl = rgbToHsl(r, g, b);
+  const colorHsv = rgbToHsv(r, g, b);
+  const colorCmyk = rgbToCmyk(r, g, b);
+
+  listItem.innerHTML = `
+    <div class="swatch-container">
+      <div class="swatch" style="background-color: ${colorHex}"></div>
+    </div>
+    <div class="color-info">
+      <button type="button" class="copy-btn" data-color="${colorHex}" title="Copy Hex">
+        <span class="label">HEX</span>
+        <span class="value">${colorHex}</span>
+      </button>
+      <button type="button" class="copy-btn" data-color="${colorRgb}" title="Copy RGB">
+        <span class="label">RGB</span>
+        <span class="value">${colorRgb}</span>
+      </button>
+      <button type="button" class="copy-btn" data-color="${colorHsl}" title="Copy HSL">
+        <span class="label">HSL</span>
+        <span class="value">${colorHsl}</span>
+      </button>
+      <button type="button" class="copy-btn" data-color="${colorHsv}" title="Copy HSV">
+        <span class="label">HSV</span>
+        <span class="value">${colorHsv}</span>
+      </button>
+      <button type="button" class="copy-btn" data-color="${colorCmyk}" title="Copy CMYK">
+        <span class="label">CMYK</span>
+        <span class="value">${colorCmyk}</span>
+      </button>
+    </div>
+  `;
+
+  return listItem;
+}
+
+function renderHistory(colors) {
+  historyList.replaceChildren();
+
+  if (!colors.length) {
+    const emptyItem = document.createElement("li");
+    emptyItem.className = "history-empty";
+    emptyItem.textContent = noColorsLabel;
+    historyList.appendChild(emptyItem);
+    return;
+  }
+
+  colors.forEach((color) => {
+    historyList.appendChild(createColorRow(color));
+  });
+}
+
+async function loadHistory() {
+  const response = await browser.runtime.sendMessage({
+    type: "GET_COLOR_HISTORY",
+  });
+  const colors = Array.isArray(response?.colors) ? response.colors : [];
+  renderHistory(colors);
+}
+
+async function copyColor(color) {
+  try {
+    await navigator.clipboard.writeText(color);
+    setStatus(`Copied ${color}`);
+    setTimeout(() => setStatus("Ready"), 2000);
+  } catch (_error) {
+    window.prompt("Copy color code", color);
+    setStatus(`Selected ${color}`);
+    setTimeout(() => setStatus("Ready"), 3000);
+  }
+}
+
+historyList.addEventListener("click", (event) => {
+  const copyBtn = event.target.closest(".copy-btn");
+  if (!copyBtn) {
+    return;
+  }
+  const color = copyBtn.dataset.color;
+  if (color) {
+    copyColor(color);
+  }
+});
+
+pickButton.addEventListener("click", async () => {
+  pickButton.disabled = true;
+  setStatus("Picking color...");
+
+  try {
+    const result = await browser.runtime.sendMessage({
+      type: "START_PICK_COLOR",
+    });
+
+    if (result?.ok && result?.color) {
+      setStatus(`Copied ${result.color}`);
+      renderHistory(Array.isArray(result.colors) ? result.colors : []);
+      setTimeout(() => setStatus("Ready"), 2000);
+      return;
+    }
+
+    if (result?.canceled) {
+      setStatus("Canceled", false);
+      setTimeout(() => setStatus("Ready"), 2000);
+      return;
+    }
+
+    setStatus("Could not pick color.", true);
+  } catch (_error) {
+    setStatus("Could not start picker.", true);
+  } finally {
+    pickButton.disabled = false;
+  }
+});
+
+loadHistory().catch(() => {
+  setStatus("Could not load color history.", true);
+});
+setStatus();

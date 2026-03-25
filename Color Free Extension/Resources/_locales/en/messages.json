@@ -1,0 +1,30 @@
+{
+  "extension_name": {
+    "message": "Color Free Extension",
+    "description": "The display name for the extension."
+  },
+  "extension_description": {
+    "message": "Pick colors with native macOS color sampler. Runs only when you click.",
+    "description": "Description of what the extension does."
+  },
+  "pick_color_menu_title": {
+    "message": "Pick Color",
+    "description": "Context menu item title to start color picking mode."
+  },
+  "popup_pick_color": {
+    "message": "Pick Color",
+    "description": "Button label in popup to start picking a color."
+  },
+  "popup_recent_colors": {
+    "message": "Recent Colors",
+    "description": "Section title for recent color list."
+  },
+  "popup_no_colors": {
+    "message": "No colors picked yet.",
+    "description": "Empty state text for color history list."
+  },
+  "popup_github_repo": {
+    "message": "GitHub Repo",
+    "description": "Small footer link label in popup for opening repository page."
+  }
+}

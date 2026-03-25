@@ -1,0 +1,333 @@
+:root {
+  color-scheme: light dark;
+  --bg: Canvas;
+  --bg-secondary: color-mix(in srgb, Canvas 94%, CanvasText 6%);
+  --text-main: CanvasText;
+  --text-muted: color-mix(in srgb, CanvasText 62%, Canvas 38%);
+  --text-light: color-mix(in srgb, CanvasText 50%, Canvas 50%);
+  --border: color-mix(in srgb, CanvasText 14%, Canvas 86%);
+  --accent: AccentColor;
+  --accent-text: AccentColorText;
+  --accent-hover: color-mix(in srgb, AccentColor 84%, Canvas 16%);
+  --item-hover: color-mix(in srgb, AccentColor 10%, Canvas 90%);
+  --swatch-border: color-mix(in srgb, CanvasText 16%, Canvas 84%);
+  --danger: #ef4444;
+  --shadow: 0 8px 24px color-mix(in srgb, CanvasText 14%, transparent);
+  /* Liquid glass tokens */
+  --glass-highlight: rgba(255, 255, 255, 0.55);
+  --glass-inner-shadow: rgba(255, 255, 255, 0.28);
+}
+
+@supports not (color: AccentColor) {
+  :root {
+    --accent: #2563eb;
+    --accent-text: #ffffff;
+    --accent-hover: #1d4ed8;
+    --item-hover: rgba(37, 99, 235, 0.09);
+  }
+}
+
+body {
+  width: 360px;
+  margin: 0;
+  padding: 16px;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+  /* Subtle liquid glass toolbar background */
+  background: color-mix(in srgb, Canvas 82%, transparent);
+  backdrop-filter: blur(40px) saturate(1.35) brightness(1.02);
+  -webkit-backdrop-filter: blur(40px) saturate(1.35) brightness(1.02);
+  color: var(--text-main);
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.repo-link {
+  align-self: center;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 2px 6px;
+  border-radius: 6px;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.repo-link:hover {
+  color: var(--text-main);
+  background: var(--item-hover);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.pick-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent-text);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  /* Liquid glass: accent-tinted frosted surface */
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--accent) 86%, white 14%) 0%,
+    color-mix(in srgb, var(--accent) 70%, Canvas 30%) 100%
+  );
+
+  /* Thin glassy border with accent + white mix */
+  border: 1px solid color-mix(in srgb, var(--accent) 48%, white 52%);
+
+  /* Frosted glass blur */
+  backdrop-filter: blur(20px) saturate(1.6) brightness(1.05);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6) brightness(1.05);
+
+  /* Outer glow + inner specular rim */
+  box-shadow:
+    0 10px 36px color-mix(in srgb, var(--accent) 30%, transparent),
+    0 2px 8px color-mix(in srgb, var(--accent) 16%, transparent),
+    inset 0 1.5px 0 var(--glass-highlight),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+
+  transition:
+    background 0.22s ease,
+    transform 0.16s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Top inner specular highlight — liquid glass refraction effect */
+.pick-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(255, 255, 255, 0) 52%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.pick-button:hover {
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--accent-hover) 88%, white 12%) 0%,
+    color-mix(in srgb, var(--accent-hover) 72%, Canvas 28%) 100%
+  );
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent-hover) 52%, white 48%);
+  box-shadow:
+    0 14px 44px color-mix(in srgb, var(--accent) 38%, transparent),
+    0 4px 12px color-mix(in srgb, var(--accent) 20%, transparent),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.62),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.14);
+}
+
+.pick-button:active {
+  transform: translateY(0);
+  box-shadow:
+    0 4px 14px color-mix(in srgb, var(--accent) 22%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pick-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pick-icon {
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.status {
+  font-size: 12px;
+  color: var(--text-muted);
+  min-height: 16px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.status-error {
+  color: var(--danger);
+}
+
+.history-section {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.history-header {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.history-title {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar */
+.history-list::-webkit-scrollbar {
+  width: 6px;
+}
+.history-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.history-list::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 10px;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s ease;
+}
+
+.history-item:last-child {
+  border-bottom: none;
+}
+
+.history-item:hover {
+  background: var(--item-hover);
+}
+
+.swatch-container {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--swatch-border);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.swatch {
+  width: 100%;
+  height: 100%;
+}
+
+.color-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  padding: 3px 6px;
+  margin: -2px -6px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.copy-btn:hover {
+  background: var(--item-hover);
+}
+
+.copy-btn .label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-light);
+  width: 32px;
+  flex-shrink: 0;
+}
+
+.copy-btn .value {
+  font-size: 12px;
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-empty {
+  padding: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --border: color-mix(in srgb, CanvasText 28%, Canvas 72%);
+    --item-hover: color-mix(in srgb, AccentColor 16%, Canvas 84%);
+  }
+
+  .pick-button {
+    box-shadow: none;
+    border: 1px solid color-mix(in srgb, CanvasText 32%, Canvas 68%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pick-button,
+  .history-item,
+  .copy-btn {
+    transition: none;
+  }
+
+  .pick-button:hover,
+  .pick-button:active {
+    transform: none;
+  }
+}

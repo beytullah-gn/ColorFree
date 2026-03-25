@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="popup.css" />
+    <script type="module" src="popup.js"></script>
+  </head>
+  <body>
+    <main class="popup-container">
+      <header class="header">
+        <button id="pick-color-button" type="button" class="pick-button">
+          <svg
+            class="pick-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+            <path d="M12 8v4" />
+          </svg>
+          <span id="pick-color-label">Pick Color</span>
+        </button>
+        <div id="status" class="status" aria-live="polite">Ready</div>
+      </header>
+
+      <section class="history-section">
+        <div class="history-header">
+          <h1 class="history-title">Recent Colors</h1>
+        </div>
+        <ul id="history-list" class="history-list"></ul>
+      </section>
+
+      <a
+        id="repo-link"
+        class="repo-link"
+        href="https://github.com/beytullah-gn/Color-Free"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub Repo
+      </a>
+    </main>
+  </body>
+</html>
