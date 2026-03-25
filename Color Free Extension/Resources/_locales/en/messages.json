@@ -11,6 +11,10 @@
     "message": "Pick Color",
     "description": "Context menu item title to start color picking mode."
   },
+  "text_style_menu_title": {
+    "message": "Text Properties",
+    "description": "Context menu item title to inspect selected text style."
+  },
   "popup_pick_color": {
     "message": "Pick Color",
     "description": "Button label in popup to start picking a color."
@@ -28,7 +32,19 @@
     "description": "Small footer link label in popup for opening repository page."
   },
   "popup_general_picker": {
-    "message": "Color Picker",
+    "message": "Create Color",
     "description": "Small button label in popup to open native color chooser."
+  },
+  "popup_selected_text_style": {
+    "message": "Selected Text Style",
+    "description": "Section title for selected text style inspector."
+  },
+  "popup_inspect_selected_text": {
+    "message": "Inspect Selected Text",
+    "description": "Button label to inspect style values of selected text."
+  },
+  "popup_no_selected_text": {
+    "message": "No selected text found.",
+    "description": "Placeholder text when no page text is selected yet."
   }
 }

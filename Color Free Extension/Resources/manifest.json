@@ -24,5 +24,11 @@
     "default_icon": "images/toolbar-icon.png"
   },
 
-  "permissions": ["contextMenus", "nativeMessaging", "activeTab", "storage"]
+  "permissions": [
+    "contextMenus",
+    "nativeMessaging",
+    "activeTab",
+    "storage",
+    "scripting"
+  ]
 }

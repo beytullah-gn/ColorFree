@@ -51,14 +51,20 @@
         <ul id="history-list" class="history-list"></ul>
       </section>
 
-      <button
-        id="open-general-picker"
-        class="mini-picker-button"
-        type="button"
-        title="Open color picker"
-      >
-        Color Picker
-      </button>
+      <div class="mini-picker-row">
+        <button
+          id="open-general-picker"
+          class="mini-picker-button"
+          type="button"
+          title="Open color picker"
+        >
+          Create Color
+        </button>
+        <div class="page-size-block" aria-live="polite">
+          <span class="page-size-label">Current Page Size:</span>
+          <span id="page-size-info" class="page-size-info"></span>
+        </div>
+      </div>
       <input
         id="general-color-input"
         class="general-color-input"
@@ -66,6 +72,28 @@
         aria-hidden="true"
         tabindex="-1"
       />
+
+      <section class="text-style-section" aria-live="polite">
+        <div class="text-style-header">
+          <h2 id="text-style-title" class="text-style-title">
+            <span class="text-style-title-icon" aria-hidden="true">Aa</span>
+            <span id="text-style-title-label">Selected Text Style</span>
+          </h2>
+          <button
+            id="inspect-text-style-button"
+            class="inspect-style-button"
+            type="button"
+          >
+            Inspect Selected Text
+          </button>
+        </div>
+
+        <div id="selected-text-preview" class="selected-text-preview">
+          No selected text found.
+        </div>
+
+        <ul id="text-style-list" class="text-style-list"></ul>
+      </section>
 
       <a
         id="repo-link"

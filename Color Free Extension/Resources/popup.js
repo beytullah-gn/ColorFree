@@ -5,6 +5,13 @@ const statusText = document.getElementById("status");
 const repoLink = document.getElementById("repo-link");
 const generalPickerButton = document.getElementById("open-general-picker");
 const generalColorInput = document.getElementById("general-color-input");
+const pageSizeInfo = document.getElementById("page-size-info");
+const inspectTextStyleButton = document.getElementById(
+  "inspect-text-style-button",
+);
+const textStyleTitleLabel = document.getElementById("text-style-title-label");
+const selectedTextPreview = document.getElementById("selected-text-preview");
+const textStyleList = document.getElementById("text-style-list");
 
 const pickColorLabel =
   browser.i18n.getMessage("popup_pick_color") || "Pick Color";
@@ -16,15 +23,158 @@ const githubRepoLabel =
   browser.i18n.getMessage("popup_github_repo") || "GitHub Repo";
 const generalPickerLabel =
   browser.i18n.getMessage("popup_general_picker") || "Color Picker";
+const selectedTextStyleLabel =
+  browser.i18n.getMessage("popup_selected_text_style") || "Selected Text Style";
+const inspectSelectedTextLabel =
+  browser.i18n.getMessage("popup_inspect_selected_text") ||
+  "Inspect Selected Text";
+const noSelectedTextLabel =
+  browser.i18n.getMessage("popup_no_selected_text") ||
+  "No selected text found.";
 
 if (labelEl) labelEl.textContent = pickColorLabel;
 document.querySelector(".history-title").textContent = recentColorsLabel;
 if (repoLink) repoLink.textContent = githubRepoLabel;
 if (generalPickerButton) generalPickerButton.textContent = generalPickerLabel;
+if (textStyleTitleLabel)
+  textStyleTitleLabel.textContent = selectedTextStyleLabel;
+if (inspectTextStyleButton)
+  inspectTextStyleButton.textContent = inspectSelectedTextLabel;
+if (selectedTextPreview) selectedTextPreview.textContent = noSelectedTextLabel;
+
+async function syncThemeSchemeForContextMenu() {
+  let scheme = "light";
+
+  try {
+    const target = document.body || document.documentElement;
+    const color = window.getComputedStyle(target).color || "rgb(17, 24, 39)";
+    const matches = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+
+    if (matches) {
+      const r = Number(matches[1]);
+      const g = Number(matches[2]);
+      const b = Number(matches[3]);
+      const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
+
+      // Light text usually means dark theme, dark text usually means light theme.
+      scheme = luminance > 0.58 ? "dark" : "light";
+    } else if (
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      scheme = "dark";
+    }
+  } catch (_error) {
+    // Keep light fallback.
+  }
+
+  try {
+    await browser.runtime.sendMessage({
+      type: "SET_UI_THEME_SCHEME",
+      scheme,
+    });
+  } catch (_error) {
+    // Ignore sync errors; popup features can still work.
+  }
+}
+
+function formatPageSize(width, height) {
+  return `${width} x ${height}px`;
+}
+
+async function loadActivePageSize() {
+  if (!pageSizeInfo) {
+    return;
+  }
+
+  pageSizeInfo.textContent = "-";
+
+  try {
+    const tabs = await browser.tabs.query({
+      active: true,
+      currentWindow: true,
+    });
+    const activeTab = tabs?.[0];
+
+    if (
+      activeTab &&
+      Number.isFinite(activeTab.width) &&
+      Number.isFinite(activeTab.height)
+    ) {
+      pageSizeInfo.textContent = formatPageSize(
+        activeTab.width,
+        activeTab.height,
+      );
+      return;
+    }
+
+    pageSizeInfo.textContent = "-";
+  } catch (_error) {
+    pageSizeInfo.textContent = "-";
+  }
+}
 
 function setStatus(message, isError = false) {
   statusText.textContent = message || "Ready";
   statusText.classList.toggle("status-error", isError);
+}
+
+function createStyleFieldRow(label, value) {
+  const listItem = document.createElement("li");
+  listItem.className = "text-style-item";
+
+  const rowButton = document.createElement("button");
+  rowButton.type = "button";
+  rowButton.className = "text-style-copy-btn";
+  rowButton.dataset.copyValue = value;
+  rowButton.title = "Copy value";
+
+  const labelSpan = document.createElement("span");
+  labelSpan.className = "text-style-label";
+  labelSpan.textContent = label;
+
+  const valueSpan = document.createElement("span");
+  valueSpan.className = "text-style-value";
+  valueSpan.textContent = value;
+
+  rowButton.append(labelSpan, valueSpan);
+  listItem.appendChild(rowButton);
+
+  return listItem;
+}
+
+function renderSelectedTextStyle(result) {
+  if (!selectedTextPreview || !textStyleList) {
+    return;
+  }
+
+  textStyleList.replaceChildren();
+
+  if (!result?.ok) {
+    selectedTextPreview.textContent = noSelectedTextLabel;
+    return;
+  }
+
+  selectedTextPreview.textContent = result.text || "Selected text";
+
+  const styleRows = [
+    ["Color", result.style.color],
+    ["Font", result.style.fontFamily],
+    ["Size", result.style.fontSize],
+    ["Weight", result.style.fontWeight],
+  ];
+
+  styleRows.forEach(([label, value]) => {
+    textStyleList.appendChild(createStyleFieldRow(label, value));
+  });
+}
+
+async function inspectSelectedTextStyle() {
+  const response = await browser.runtime.sendMessage({
+    type: "START_TEXT_STYLE_INSPECT",
+  });
+
+  return response || { ok: false, error: "No style result returned." };
 }
 
 function hexToColorObj(hex) {
@@ -209,6 +359,43 @@ historyList.addEventListener("click", (event) => {
   }
 });
 
+if (textStyleList) {
+  textStyleList.addEventListener("click", (event) => {
+    const styleCopyButton = event.target.closest(".text-style-copy-btn");
+    if (!styleCopyButton) {
+      return;
+    }
+
+    const copyValue = styleCopyButton.dataset.copyValue;
+    if (copyValue) {
+      copyColor(copyValue);
+    }
+  });
+}
+
+if (inspectTextStyleButton) {
+  inspectTextStyleButton.addEventListener("click", async () => {
+    inspectTextStyleButton.disabled = true;
+    setStatus("Inspecting selected text...");
+
+    try {
+      const inspectResult = await inspectSelectedTextStyle();
+      renderSelectedTextStyle(inspectResult);
+
+      if (inspectResult?.ok) {
+        setStatus("Text style loaded.");
+      } else {
+        setStatus("Select any text on the page first.", true);
+      }
+    } catch (_error) {
+      setStatus("Could not inspect selected text.", true);
+    } finally {
+      inspectTextStyleButton.disabled = false;
+      setTimeout(() => setStatus("Ready"), 2200);
+    }
+  });
+}
+
 pickButton.addEventListener("click", async () => {
   pickButton.disabled = true;
   pickButton.classList.add("is-loading");
@@ -244,6 +431,8 @@ pickButton.addEventListener("click", async () => {
 loadHistory().catch(() => {
   setStatus("Could not load color history.", true);
 });
+loadActivePageSize();
+syncThemeSchemeForContextMenu();
 setStatus();
 
 if (generalPickerButton && generalColorInput) {
