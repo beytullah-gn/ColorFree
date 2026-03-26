@@ -1,0 +1,162 @@
+{
+  "extension_name": {
+    "message": "Web Element Tool Extension",
+    "description": "The display name for the extension."
+  },
+  "extension_description": {
+    "message": "Pilih warna dengan pengambil warna asli macOS. Berjalan hanya saat Anda mengeklik.",
+    "description": "Description of what the extension does."
+  },
+  "pick_color_menu_title": {
+    "message": "Pilih Warna",
+    "description": "Context menu item title to start color picking mode."
+  },
+  "text_style_menu_title": {
+    "message": "Properti Teks",
+    "description": "Context menu item title to inspect selected text style."
+  },
+  "popup_pick_color": {
+    "message": "Pilih Warna",
+    "description": "Button label in popup to start picking a color."
+  },
+  "popup_recent_colors": {
+    "message": "Warna Terbaru",
+    "description": "Section title for recent color list."
+  },
+  "popup_no_colors": {
+    "message": "Belum ada warna yang dipilih.",
+    "description": "Empty state text for color history list."
+  },
+  "popup_github_repo": {
+    "message": "Repo GitHub",
+    "description": "Small footer link label in popup for opening repository page."
+  },
+  "popup_general_picker": {
+    "message": "Buat Warna",
+    "description": "Small button label in popup to open native color chooser."
+  },
+  "popup_general_picker_title": {
+    "message": "Buka pemilih warna",
+    "description": "Tooltip for the popup color creator button."
+  },
+  "popup_selected_text_style": {
+    "message": "Gaya Teks Terpilih",
+    "description": "Section title for selected text style inspector."
+  },
+  "popup_inspect_selected_text": {
+    "message": "Periksa Teks Terpilih",
+    "description": "Button label to inspect style values of selected text."
+  },
+  "popup_no_selected_text": {
+    "message": "Tidak ada teks terpilih yang ditemukan.",
+    "description": "Placeholder text when no page text is selected yet."
+  },
+  "popup_page_size_label": {
+    "message": "Ukuran Halaman Saat Ini:",
+    "description": "Label for the active page size information in the popup."
+  },
+  "popup_status_ready": {
+    "message": "Siap",
+    "description": "Default popup status text."
+  },
+  "popup_status_copied_value": {
+    "message": "{{value}} disalin",
+    "description": "Status message shown after copying a value."
+  },
+  "popup_status_selected_value": {
+    "message": "{{value}} dipilih",
+    "description": "Fallback status message shown after selecting a value via prompt."
+  },
+  "popup_status_inspecting_text": {
+    "message": "Memeriksa teks terpilih...",
+    "description": "Status message shown while text style inspection is running."
+  },
+  "popup_status_text_style_loaded": {
+    "message": "Gaya teks dimuat.",
+    "description": "Status message shown after a successful text style inspection."
+  },
+  "popup_status_select_text_first": {
+    "message": "Pilih teks apa pun di halaman terlebih dahulu.",
+    "description": "Error shown when no selected text is available."
+  },
+  "popup_status_inspect_text_failed": {
+    "message": "Tidak dapat memeriksa teks terpilih.",
+    "description": "Error shown when text style inspection fails."
+  },
+  "popup_status_picking_color": {
+    "message": "Memilih warna...",
+    "description": "Status shown while the native color picker is opening."
+  },
+  "popup_status_canceled": {
+    "message": "Dibatalkan",
+    "description": "Status shown when the native color picker is canceled."
+  },
+  "popup_status_pick_color_failed": {
+    "message": "Tidak dapat memilih warna.",
+    "description": "Error shown when color picking returns no result."
+  },
+  "popup_status_picker_start_failed": {
+    "message": "Tidak dapat memulai pemilih.",
+    "description": "Error shown when the native picker cannot be started."
+  },
+  "popup_status_load_history_failed": {
+    "message": "Tidak dapat memuat riwayat warna.",
+    "description": "Error shown when stored color history cannot be read."
+  },
+  "popup_status_save_color_failed": {
+    "message": "Tidak dapat menyimpan warna yang dipilih.",
+    "description": "Error shown when the chosen color cannot be stored."
+  },
+  "popup_copy_prompt": {
+    "message": "Salin kode warna",
+    "description": "Prompt label used when clipboard access is not available."
+  },
+  "popup_copy_value_title": {
+    "message": "Salin nilai",
+    "description": "Tooltip used for copyable values in the popup."
+  },
+  "popup_selected_text_fallback": {
+    "message": "Teks terpilih",
+    "description": "Fallback label when selected text exists but no preview text is provided."
+  },
+  "style_label_color": {
+    "message": "Warna",
+    "description": "Label for a color style value."
+  },
+  "style_label_font": {
+    "message": "Font",
+    "description": "Label for a font family style value."
+  },
+  "style_label_size": {
+    "message": "Ukuran",
+    "description": "Label for a font size style value."
+  },
+  "style_label_weight": {
+    "message": "Ketebalan",
+    "description": "Label for a font weight style value."
+  },
+  "text_inspector_no_text_selected": {
+    "message": "Tidak ada teks yang dipilih.",
+    "description": "Error shown when text inspection is requested without a selection."
+  },
+  "text_inspector_selected_element_error": {
+    "message": "Elemen terpilih tidak dapat dibaca.",
+    "description": "Error shown when the selected element cannot be resolved."
+  },
+  "text_inspector_close": {
+    "message": "Tutup",
+    "description": "Button label for closing the on-page text inspector panel."
+  },
+  "text_inspector_close_aria_label": {
+    "message": "Tutup properti teks",
+    "description": "Accessible label for the on-page text inspector close button."
+  },
+  "text_inspector_title": {
+    "message": "Properti Teks",
+    "description": "Title of the on-page text inspector panel."
+  },
+  "text_inspector_copy_prompt": {
+    "message": "Salin nilai gaya teks",
+    "description": "Prompt shown when copying a text style value falls back to prompt."
+  }
+}

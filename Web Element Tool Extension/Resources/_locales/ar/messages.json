@@ -1,0 +1,162 @@
+{
+  "extension_name": {
+    "message": "Web Element Tool Extension",
+    "description": "The display name for the extension."
+  },
+  "extension_description": {
+    "message": "اختر الألوان باستخدام أداة macOS الأصلية لاختيار الألوان. يعمل فقط عند النقر.",
+    "description": "Description of what the extension does."
+  },
+  "pick_color_menu_title": {
+    "message": "اختيار لون",
+    "description": "Context menu item title to start color picking mode."
+  },
+  "text_style_menu_title": {
+    "message": "خصائص النص",
+    "description": "Context menu item title to inspect selected text style."
+  },
+  "popup_pick_color": {
+    "message": "اختيار لون",
+    "description": "Button label in popup to start picking a color."
+  },
+  "popup_recent_colors": {
+    "message": "الألوان الأخيرة",
+    "description": "Section title for recent color list."
+  },
+  "popup_no_colors": {
+    "message": "لم يتم اختيار أي ألوان بعد.",
+    "description": "Empty state text for color history list."
+  },
+  "popup_github_repo": {
+    "message": "مستودع GitHub",
+    "description": "Small footer link label in popup for opening repository page."
+  },
+  "popup_general_picker": {
+    "message": "إنشاء لون",
+    "description": "Small button label in popup to open native color chooser."
+  },
+  "popup_general_picker_title": {
+    "message": "فتح أداة اختيار الألوان",
+    "description": "Tooltip for the popup color creator button."
+  },
+  "popup_selected_text_style": {
+    "message": "نمط النص المحدد",
+    "description": "Section title for selected text style inspector."
+  },
+  "popup_inspect_selected_text": {
+    "message": "فحص النص المحدد",
+    "description": "Button label to inspect style values of selected text."
+  },
+  "popup_no_selected_text": {
+    "message": "لم يتم العثور على نص محدد.",
+    "description": "Placeholder text when no page text is selected yet."
+  },
+  "popup_page_size_label": {
+    "message": "حجم الصفحة الحالي:",
+    "description": "Label for the active page size information in the popup."
+  },
+  "popup_status_ready": {
+    "message": "جاهز",
+    "description": "Default popup status text."
+  },
+  "popup_status_copied_value": {
+    "message": "تم نسخ {{value}}",
+    "description": "Status message shown after copying a value."
+  },
+  "popup_status_selected_value": {
+    "message": "تم تحديد {{value}}",
+    "description": "Fallback status message shown after selecting a value via prompt."
+  },
+  "popup_status_inspecting_text": {
+    "message": "جارٍ فحص النص المحدد...",
+    "description": "Status message shown while text style inspection is running."
+  },
+  "popup_status_text_style_loaded": {
+    "message": "تم تحميل نمط النص.",
+    "description": "Status message shown after a successful text style inspection."
+  },
+  "popup_status_select_text_first": {
+    "message": "حدد أي نص في الصفحة أولاً.",
+    "description": "Error shown when no selected text is available."
+  },
+  "popup_status_inspect_text_failed": {
+    "message": "تعذر فحص النص المحدد.",
+    "description": "Error shown when text style inspection fails."
+  },
+  "popup_status_picking_color": {
+    "message": "جارٍ اختيار اللون...",
+    "description": "Status shown while the native color picker is opening."
+  },
+  "popup_status_canceled": {
+    "message": "تم الإلغاء",
+    "description": "Status shown when the native color picker is canceled."
+  },
+  "popup_status_pick_color_failed": {
+    "message": "تعذر اختيار اللون.",
+    "description": "Error shown when color picking returns no result."
+  },
+  "popup_status_picker_start_failed": {
+    "message": "تعذر بدء أداة الاختيار.",
+    "description": "Error shown when the native picker cannot be started."
+  },
+  "popup_status_load_history_failed": {
+    "message": "تعذر تحميل سجل الألوان.",
+    "description": "Error shown when stored color history cannot be read."
+  },
+  "popup_status_save_color_failed": {
+    "message": "تعذر حفظ اللون المحدد.",
+    "description": "Error shown when the chosen color cannot be stored."
+  },
+  "popup_copy_prompt": {
+    "message": "انسخ رمز اللون",
+    "description": "Prompt label used when clipboard access is not available."
+  },
+  "popup_copy_value_title": {
+    "message": "نسخ القيمة",
+    "description": "Tooltip used for copyable values in the popup."
+  },
+  "popup_selected_text_fallback": {
+    "message": "النص المحدد",
+    "description": "Fallback label when selected text exists but no preview text is provided."
+  },
+  "style_label_color": {
+    "message": "اللون",
+    "description": "Label for a color style value."
+  },
+  "style_label_font": {
+    "message": "الخط",
+    "description": "Label for a font family style value."
+  },
+  "style_label_size": {
+    "message": "الحجم",
+    "description": "Label for a font size style value."
+  },
+  "style_label_weight": {
+    "message": "السماكة",
+    "description": "Label for a font weight style value."
+  },
+  "text_inspector_no_text_selected": {
+    "message": "لم يتم تحديد نص.",
+    "description": "Error shown when text inspection is requested without a selection."
+  },
+  "text_inspector_selected_element_error": {
+    "message": "تعذر قراءة العنصر المحدد.",
+    "description": "Error shown when the selected element cannot be resolved."
+  },
+  "text_inspector_close": {
+    "message": "إغلاق",
+    "description": "Button label for closing the on-page text inspector panel."
+  },
+  "text_inspector_close_aria_label": {
+    "message": "إغلاق خصائص النص",
+    "description": "Accessible label for the on-page text inspector close button."
+  },
+  "text_inspector_title": {
+    "message": "خصائص النص",
+    "description": "Title of the on-page text inspector panel."
+  },
+  "text_inspector_copy_prompt": {
+    "message": "انسخ قيمة نمط النص",
+    "description": "Prompt shown when copying a text style value falls back to prompt."
+  }
+}

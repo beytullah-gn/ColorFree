@@ -7,8 +7,8 @@ xcuserdata/
 **/xcuserdata/
 *.xcodeproj/xcuserdata/
 *.xcworkspace/xcuserdata/
-Color Free.xcodeproj/xcuserdata/
-Color Free.xcodeproj/project.xcworkspace/xcuserdata/
+Web Element Tool.xcodeproj/xcuserdata/
+Web Element Tool.xcodeproj/project.xcworkspace/xcuserdata/
 
 # Xcode build artifacts
 build/
@@ -26,3 +26,5 @@ DerivedData/
 *.p12
 *.mobileprovision
 *.pem
+
+**/Appstore

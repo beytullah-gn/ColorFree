@@ -1,6 +1,6 @@
-# Color Free
+# Web Element Tool
 
-Color Free is a macOS app with a Safari Web Extension that combines native macOS color sampling with quick in-browser inspection tools.
+Web Element Tool is a macOS app with a Safari Web Extension that combines native macOS color sampling with quick in-browser inspection tools.
 
 It now covers both color workflows and selected text style inspection inside Safari.
 
@@ -79,9 +79,9 @@ Each saved color can be copied with one click in these formats:
 
 ## Project Structure
 
-- `Color Free/`: macOS host application
-- `Color Free Extension/`: Safari Web Extension target
-- `Color Free.xcodeproj/`: Xcode project
+- `Web Element Tool/`: macOS host application
+- `Web Element Tool Extension/`: Safari Web Extension target
+- `Web Element Tool.xcodeproj/`: Xcode project
 
 ## Requirements
 
@@ -111,11 +111,13 @@ Each saved color can be copied with one click in these formats:
 
 ## Build and Run
 
-1. Open `Color Free.xcodeproj` in Xcode.
-2. Select the `Color Free` scheme.
+1. Open `Web Element Tool.xcodeproj` in Xcode.
+2. Select the `Web Element Tool` scheme.
 3. Run the macOS app target.
 4. Enable the extension in Safari:
-   - `Safari > Settings > Extensions > Color Free Extension`
+
+- `Safari > Settings > Extensions > Web Element Tool Extension`
+
 5. Use one of these entry points:
    - popup `Pick Color`
    - popup `Create Color`
@@ -144,12 +146,12 @@ These are used for Safari context menu integration, the native macOS bridge, act
 
 ## Development Notes
 
-- Localization strings are stored in `Color Free Extension/Resources/_locales/en/messages.json`.
-- Additional locale files are available under `Color Free Extension/Resources/_locales/` for Arabic, Bengali, Chinese, German, French, Hindi, Indonesian, Italian, Japanese, Korean, Malay, Portuguese, Punjabi, Russian, Turkish, Urdu, and Spanish.
-- Popup behavior is implemented in `Color Free Extension/Resources/popup.js`.
-- Background messaging, context menus, and history persistence are handled in `Color Free Extension/Resources/background.js`.
-- Native picker handling is implemented in `Color Free Extension/SafariWebExtensionHandler.swift`.
-- The macOS host app shows extension status, opens Safari extension settings, and localizes its onboarding text in `Color Free/Resources/Script.js`.
+- Localization strings are stored in `Web Element Tool Extension/Resources/_locales/en/messages.json`.
+- Additional locale files are available under `Web Element Tool Extension/Resources/_locales/` for Arabic, Bengali, Chinese, German, French, Hindi, Indonesian, Italian, Japanese, Korean, Malay, Portuguese, Punjabi, Russian, Turkish, Urdu, and Spanish.
+- Popup behavior is implemented in `Web Element Tool Extension/Resources/popup.js`.
+- Background messaging, context menus, and history persistence are handled in `Web Element Tool Extension/Resources/background.js`.
+- Native picker handling is implemented in `Web Element Tool Extension/SafariWebExtensionHandler.swift`.
+- The macOS host app shows extension status, opens Safari extension settings, and localizes its onboarding text in `Web Element Tool/Resources/Script.js`.
 
 ## License
 

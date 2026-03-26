@@ -1,0 +1,162 @@
+{
+  "extension_name": {
+    "message": "Web Element Tool Extension",
+    "description": "Nombre visible de la extensión."
+  },
+  "extension_description": {
+    "message": "Selecciona colores con el selector nativo de macOS. Solo se ejecuta cuando haces clic.",
+    "description": "Describe lo que hace la extensión."
+  },
+  "pick_color_menu_title": {
+    "message": "Elegir color",
+    "description": "Título del menú contextual para iniciar la selección de color."
+  },
+  "text_style_menu_title": {
+    "message": "Propiedades del texto",
+    "description": "Título del menú contextual para inspeccionar el estilo del texto seleccionado."
+  },
+  "popup_pick_color": {
+    "message": "Elegir color",
+    "description": "Etiqueta del botón del popup para iniciar la selección de color."
+  },
+  "popup_recent_colors": {
+    "message": "Colores recientes",
+    "description": "Título de la lista de colores recientes."
+  },
+  "popup_no_colors": {
+    "message": "Todavía no se han seleccionado colores.",
+    "description": "Texto del estado vacío para el historial de colores."
+  },
+  "popup_github_repo": {
+    "message": "Repositorio de GitHub",
+    "description": "Etiqueta del enlace al repositorio."
+  },
+  "popup_general_picker": {
+    "message": "Crear color",
+    "description": "Etiqueta del botón pequeño para abrir el selector general de color."
+  },
+  "popup_general_picker_title": {
+    "message": "Abrir selector de color",
+    "description": "Tooltip del botón creador de color del popup."
+  },
+  "popup_selected_text_style": {
+    "message": "Estilo del texto seleccionado",
+    "description": "Título de la sección del estilo del texto seleccionado."
+  },
+  "popup_inspect_selected_text": {
+    "message": "Inspeccionar texto seleccionado",
+    "description": "Etiqueta del botón para inspeccionar el texto seleccionado."
+  },
+  "popup_no_selected_text": {
+    "message": "No se encontró texto seleccionado.",
+    "description": "Texto mostrado cuando todavía no hay texto seleccionado."
+  },
+  "popup_page_size_label": {
+    "message": "Tamaño actual de la página:",
+    "description": "Etiqueta de la información del tamaño de la página activa."
+  },
+  "popup_status_ready": {
+    "message": "Listo",
+    "description": "Texto de estado predeterminado del popup."
+  },
+  "popup_status_copied_value": {
+    "message": "Se copió {{value}}",
+    "description": "Mensaje de estado mostrado después de copiar un valor."
+  },
+  "popup_status_selected_value": {
+    "message": "Se seleccionó {{value}}",
+    "description": "Mensaje de estado mostrado después de seleccionar un valor mediante prompt."
+  },
+  "popup_status_inspecting_text": {
+    "message": "Inspeccionando el texto seleccionado...",
+    "description": "Mensaje de estado mostrado mientras se inspecciona el estilo del texto."
+  },
+  "popup_status_text_style_loaded": {
+    "message": "Estilo del texto cargado.",
+    "description": "Mensaje de estado mostrado tras una inspección exitosa."
+  },
+  "popup_status_select_text_first": {
+    "message": "Primero selecciona algún texto en la página.",
+    "description": "Error mostrado cuando no hay texto seleccionado."
+  },
+  "popup_status_inspect_text_failed": {
+    "message": "No se pudo inspeccionar el texto seleccionado.",
+    "description": "Error mostrado cuando falla la inspección del texto."
+  },
+  "popup_status_picking_color": {
+    "message": "Seleccionando color...",
+    "description": "Estado mostrado mientras se abre el selector nativo."
+  },
+  "popup_status_canceled": {
+    "message": "Cancelado",
+    "description": "Estado mostrado cuando se cancela la selección de color."
+  },
+  "popup_status_pick_color_failed": {
+    "message": "No se pudo seleccionar el color.",
+    "description": "Error mostrado cuando la selección de color no devuelve resultado."
+  },
+  "popup_status_picker_start_failed": {
+    "message": "No se pudo iniciar el selector.",
+    "description": "Error mostrado cuando no se puede iniciar el selector nativo."
+  },
+  "popup_status_load_history_failed": {
+    "message": "No se pudo cargar el historial de colores.",
+    "description": "Error mostrado cuando no se puede leer el historial guardado."
+  },
+  "popup_status_save_color_failed": {
+    "message": "No se pudo guardar el color seleccionado.",
+    "description": "Error mostrado cuando no se puede guardar el color elegido."
+  },
+  "popup_copy_prompt": {
+    "message": "Copiar código de color",
+    "description": "Etiqueta del prompt cuando no hay acceso al portapapeles."
+  },
+  "popup_copy_value_title": {
+    "message": "Copiar valor",
+    "description": "Tooltip para valores copiables dentro del popup."
+  },
+  "popup_selected_text_fallback": {
+    "message": "Texto seleccionado",
+    "description": "Etiqueta de respaldo cuando hay selección pero no hay texto de vista previa."
+  },
+  "style_label_color": {
+    "message": "Color",
+    "description": "Etiqueta para un valor de color."
+  },
+  "style_label_font": {
+    "message": "Fuente",
+    "description": "Etiqueta para una familia tipográfica."
+  },
+  "style_label_size": {
+    "message": "Tamaño",
+    "description": "Etiqueta para un tamaño de fuente."
+  },
+  "style_label_weight": {
+    "message": "Peso",
+    "description": "Etiqueta para un peso de fuente."
+  },
+  "text_inspector_no_text_selected": {
+    "message": "No hay texto seleccionado.",
+    "description": "Error mostrado cuando se solicita la inspección sin selección."
+  },
+  "text_inspector_selected_element_error": {
+    "message": "No se pudo leer el elemento seleccionado.",
+    "description": "Error mostrado cuando no se puede resolver el elemento seleccionado."
+  },
+  "text_inspector_close": {
+    "message": "Cerrar",
+    "description": "Etiqueta del botón para cerrar el panel de inspección en página."
+  },
+  "text_inspector_close_aria_label": {
+    "message": "Cerrar propiedades del texto",
+    "description": "Etiqueta accesible del botón de cierre del panel."
+  },
+  "text_inspector_title": {
+    "message": "Propiedades del texto",
+    "description": "Título del panel de inspección en página."
+  },
+  "text_inspector_copy_prompt": {
+    "message": "Copiar valor del estilo del texto",
+    "description": "Prompt mostrado cuando copiar un valor de estilo cae en prompt."
+  }
+}

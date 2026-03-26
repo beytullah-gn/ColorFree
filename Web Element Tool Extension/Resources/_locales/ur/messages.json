@@ -1,0 +1,162 @@
+{
+  "extension_name": {
+    "message": "Web Element Tool Extension",
+    "description": "The display name for the extension."
+  },
+  "extension_description": {
+    "message": "macOS کے مقامی color sampler کے ساتھ رنگ منتخب کریں۔ یہ صرف کلک کرنے پر چلتا ہے۔",
+    "description": "Description of what the extension does."
+  },
+  "pick_color_menu_title": {
+    "message": "رنگ منتخب کریں",
+    "description": "Context menu item title to start color picking mode."
+  },
+  "text_style_menu_title": {
+    "message": "متن کی خصوصیات",
+    "description": "Context menu item title to inspect selected text style."
+  },
+  "popup_pick_color": {
+    "message": "رنگ منتخب کریں",
+    "description": "Button label in popup to start picking a color."
+  },
+  "popup_recent_colors": {
+    "message": "حالیہ رنگ",
+    "description": "Section title for recent color list."
+  },
+  "popup_no_colors": {
+    "message": "ابھی تک کوئی رنگ منتخب نہیں کیا گیا۔",
+    "description": "Empty state text for color history list."
+  },
+  "popup_github_repo": {
+    "message": "GitHub ریپوزٹری",
+    "description": "Small footer link label in popup for opening repository page."
+  },
+  "popup_general_picker": {
+    "message": "رنگ بنائیں",
+    "description": "Small button label in popup to open native color chooser."
+  },
+  "popup_general_picker_title": {
+    "message": "رنگ منتخب کرنے والا کھولیں",
+    "description": "Tooltip for the popup color creator button."
+  },
+  "popup_selected_text_style": {
+    "message": "منتخب متن کا انداز",
+    "description": "Section title for selected text style inspector."
+  },
+  "popup_inspect_selected_text": {
+    "message": "منتخب متن کا معائنہ کریں",
+    "description": "Button label to inspect style values of selected text."
+  },
+  "popup_no_selected_text": {
+    "message": "کوئی منتخب متن نہیں ملا۔",
+    "description": "Placeholder text when no page text is selected yet."
+  },
+  "popup_page_size_label": {
+    "message": "موجودہ صفحہ سائز:",
+    "description": "Label for the active page size information in the popup."
+  },
+  "popup_status_ready": {
+    "message": "تیار",
+    "description": "Default popup status text."
+  },
+  "popup_status_copied_value": {
+    "message": "{{value}} کاپی ہو گیا",
+    "description": "Status message shown after copying a value."
+  },
+  "popup_status_selected_value": {
+    "message": "{{value}} منتخب ہو گیا",
+    "description": "Fallback status message shown after selecting a value via prompt."
+  },
+  "popup_status_inspecting_text": {
+    "message": "منتخب متن کا معائنہ کیا جا رہا ہے...",
+    "description": "Status message shown while text style inspection is running."
+  },
+  "popup_status_text_style_loaded": {
+    "message": "متن کا انداز لوڈ ہو گیا۔",
+    "description": "Status message shown after a successful text style inspection."
+  },
+  "popup_status_select_text_first": {
+    "message": "پہلے صفحے پر کچھ متن منتخب کریں۔",
+    "description": "Error shown when no selected text is available."
+  },
+  "popup_status_inspect_text_failed": {
+    "message": "منتخب متن کا معائنہ نہیں ہو سکا۔",
+    "description": "Error shown when text style inspection fails."
+  },
+  "popup_status_picking_color": {
+    "message": "رنگ منتخب کیا جا رہا ہے...",
+    "description": "Status shown while the native color picker is opening."
+  },
+  "popup_status_canceled": {
+    "message": "منسوخ",
+    "description": "Status shown when the native color picker is canceled."
+  },
+  "popup_status_pick_color_failed": {
+    "message": "رنگ منتخب نہیں ہو سکا۔",
+    "description": "Error shown when color picking returns no result."
+  },
+  "popup_status_picker_start_failed": {
+    "message": "پیکر شروع نہیں ہو سکا۔",
+    "description": "Error shown when the native picker cannot be started."
+  },
+  "popup_status_load_history_failed": {
+    "message": "رنگوں کی تاریخ لوڈ نہیں ہو سکی۔",
+    "description": "Error shown when stored color history cannot be read."
+  },
+  "popup_status_save_color_failed": {
+    "message": "منتخب رنگ محفوظ نہیں ہو سکا۔",
+    "description": "Error shown when the chosen color cannot be stored."
+  },
+  "popup_copy_prompt": {
+    "message": "رنگ کوڈ کاپی کریں",
+    "description": "Prompt label used when clipboard access is not available."
+  },
+  "popup_copy_value_title": {
+    "message": "قدر کاپی کریں",
+    "description": "Tooltip used for copyable values in the popup."
+  },
+  "popup_selected_text_fallback": {
+    "message": "منتخب متن",
+    "description": "Fallback label when selected text exists but no preview text is provided."
+  },
+  "style_label_color": {
+    "message": "رنگ",
+    "description": "Label for a color style value."
+  },
+  "style_label_font": {
+    "message": "فونٹ",
+    "description": "Label for a font family style value."
+  },
+  "style_label_size": {
+    "message": "سائز",
+    "description": "Label for a font size style value."
+  },
+  "style_label_weight": {
+    "message": "موٹائی",
+    "description": "Label for a font weight style value."
+  },
+  "text_inspector_no_text_selected": {
+    "message": "کوئی متن منتخب نہیں کیا گیا۔",
+    "description": "Error shown when text inspection is requested without a selection."
+  },
+  "text_inspector_selected_element_error": {
+    "message": "منتخب عنصر پڑھا نہیں جا سکا۔",
+    "description": "Error shown when the selected element cannot be resolved."
+  },
+  "text_inspector_close": {
+    "message": "بند کریں",
+    "description": "Button label for closing the on-page text inspector panel."
+  },
+  "text_inspector_close_aria_label": {
+    "message": "متن کی خصوصیات بند کریں",
+    "description": "Accessible label for the on-page text inspector close button."
+  },
+  "text_inspector_title": {
+    "message": "متن کی خصوصیات",
+    "description": "Title of the on-page text inspector panel."
+  },
+  "text_inspector_copy_prompt": {
+    "message": "متن کے انداز کی قدر کاپی کریں",
+    "description": "Prompt shown when copying a text style value falls back to prompt."
+  }
+}
