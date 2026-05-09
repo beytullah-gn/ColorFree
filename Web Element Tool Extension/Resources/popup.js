@@ -95,6 +95,11 @@ const labels = {
   styleFont: getMessage("style_label_font", "Font"),
   styleSize: getMessage("style_label_size", "Size"),
   styleWeight: getMessage("style_label_weight", "Weight"),
+  styleLineHeight: getMessage("style_label_line_height", "Line Height"),
+  styleLetterSpacing: getMessage(
+    "style_label_letter_spacing",
+    "Letter Spacing",
+  ),
 };
 
 if (labelEl) labelEl.textContent = labels.pickColor;
@@ -232,6 +237,8 @@ function renderSelectedTextStyle(result) {
     [labels.styleFont, result.style.fontFamily],
     [labels.styleSize, result.style.fontSize],
     [labels.styleWeight, result.style.fontWeight],
+    [labels.styleLineHeight, result.style.lineHeight],
+    [labels.styleLetterSpacing, result.style.letterSpacing],
   ];
 
   styleRows.forEach(([label, value]) => {

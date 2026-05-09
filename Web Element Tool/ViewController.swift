@@ -43,15 +43,32 @@ class ViewController: NSViewController, WKNavigationDelegate, WKScriptMessageHan
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        if (message.body as! String != "open-preferences") {
-            return;
+        guard let command = message.body as? String, command == "open-preferences" else {
+            return
         }
 
-        SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { error in
+        setOpenInProgress(true)
+
+        SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { [weak self] error in
             DispatchQueue.main.async {
-                NSApplication.shared.terminate(nil)
+                self?.setOpenInProgress(false)
+
+                guard let error else {
+                    return
+                }
+
+                self?.presentOpenSettingsError(error)
             }
         }
+    }
+
+    private func setOpenInProgress(_ isOpening: Bool) {
+        webView.evaluateJavaScript("setOpenInProgress(\(isOpening))")
+    }
+
+    private func presentOpenSettingsError(_ error: Error) {
+        let alert = NSAlert(error: error)
+        alert.runModal()
     }
 
 }

@@ -4,7 +4,7 @@ Last updated: 26 March 2026
 Language: English (en)
 Status: Final
 
-Web Element Tool and Web Element Tool Extension ("the App") are designed to work locally on your device.
+Color Picker & Text Styles Extension ("the App") are designed to work locally on your device.
 
 ## Summary
 

@@ -33,6 +33,11 @@ function getTextInspectorMessages() {
     styleFont: getMessage("style_label_font", "Font"),
     styleSize: getMessage("style_label_size", "Size"),
     styleWeight: getMessage("style_label_weight", "Weight"),
+    styleLineHeight: getMessage("style_label_line_height", "Line Height"),
+    styleLetterSpacing: getMessage(
+      "style_label_letter_spacing",
+      "Letter Spacing",
+    ),
   };
 }
 
@@ -96,6 +101,8 @@ function inspectSelectedTextOnPage(showPanel = false, messages = {}) {
     styleFont: messages.styleFont || "Font",
     styleSize: messages.styleSize || "Size",
     styleWeight: messages.styleWeight || "Weight",
+    styleLineHeight: messages.styleLineHeight || "Line Height",
+    styleLetterSpacing: messages.styleLetterSpacing || "Letter Spacing",
   };
 
   const selection = window.getSelection();
@@ -131,6 +138,8 @@ function inspectSelectedTextOnPage(showPanel = false, messages = {}) {
       fontFamily: styles.fontFamily,
       fontSize: styles.fontSize,
       fontWeight: styles.fontWeight,
+      lineHeight: styles.lineHeight,
+      letterSpacing: styles.letterSpacing,
     },
   };
 
@@ -246,6 +255,8 @@ function inspectSelectedTextOnPage(showPanel = false, messages = {}) {
       [resolvedMessages.styleFont, payload.style.fontFamily],
       [resolvedMessages.styleSize, payload.style.fontSize],
       [resolvedMessages.styleWeight, payload.style.fontWeight],
+      [resolvedMessages.styleLineHeight, payload.style.lineHeight],
+      [resolvedMessages.styleLetterSpacing, payload.style.letterSpacing],
     ];
 
     rows.forEach(([label, value]) => {

@@ -1,6 +1,6 @@
 {
   "extension_name": {
-    "message": "Web Element Tool Extension",
+    "message": "Selector de color y estilos",
     "description": "Nombre visible de la extensión."
   },
   "extension_description": {
@@ -134,6 +134,14 @@
   "style_label_weight": {
     "message": "Peso",
     "description": "Etiqueta para un peso de fuente."
+  },
+  "style_label_line_height": {
+    "message": "Altura de línea",
+    "description": "Label for a line height style value."
+  },
+  "style_label_letter_spacing": {
+    "message": "Espaciado de letras",
+    "description": "Label for a letter spacing style value."
   },
   "text_inspector_no_text_selected": {
     "message": "No hay texto seleccionado.",

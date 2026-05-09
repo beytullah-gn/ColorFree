@@ -1,6 +1,6 @@
 {
   "extension_name": {
-    "message": "Web Element Tool Extension",
+    "message": "Farbwähler & Textstile",
     "description": "The display name for the extension."
   },
   "extension_description": {
@@ -134,6 +134,14 @@
   "style_label_weight": {
     "message": "Stärke",
     "description": "Label for a font weight style value."
+  },
+  "style_label_line_height": {
+    "message": "Zeilenhöhe",
+    "description": "Label for a line height style value."
+  },
+  "style_label_letter_spacing": {
+    "message": "Zeichenabstand",
+    "description": "Label for a letter spacing style value."
   },
   "text_inspector_no_text_selected": {
     "message": "Kein Text ausgewählt.",
